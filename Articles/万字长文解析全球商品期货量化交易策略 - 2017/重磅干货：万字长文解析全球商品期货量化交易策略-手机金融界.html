@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://m.jrj.com.cn/madapter/futures/2017/02/22140422090135.shtml -->
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths -webkit-"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界</title>
+<meta name="keywords" content="重磅干货：万字长文解析全球商品期货量化交易策略,反转策略,交易策略,动量效应,1986年,类期货,">
+<!--jrj_final_description_start-->
+<meta name="description" content="重磅干货：万字长文解析全球商品期货量化交易策略,　　来源： 安尉 王君 李而实 来源 | 中信建投策略 
+　　全球商品期货量化对冲基金及产品介绍商品期货交易源远流长，分布广泛。商品期货品种繁多，因此可以通过多品种投资有效降低回撤。另一方面，商品期货市场与股票市场有着相对较低的相关性，因此经常被作为分散投资、降低风险的良好标的。海外有相当多的对冲基金同时投资于大宗商品、股票、外汇等市场，而国内的基金公司也开始逐步关">
+<meta http-equiv="Cache-Control" content="no-transform">
+<!--jrj_final_description_end-->
+
+    
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<link rel="apple-touch-icon" sizes="144x144" href="http://i0.jrjimg.cn/mjrj_v2015/apple-touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://i0.jrjimg.cn/mjrj_v2015/apple-touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://i0.jrjimg.cn/mjrj_v2015/apple-touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://i0.jrjimg.cn/mjrj_v2015/apple-touch-icon-iphone.png">
+    <link href="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/common.css" rel="stylesheet" data-inprogress="">
+	<link href="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/css1.1.1.css" rel="stylesheet" data-inprogress="">
+    <link href="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/css_mtable.css" rel="stylesheet" data-inprogress="">
+    <script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/hm.js.download"></script><script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/push.js.download"></script><script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js.do"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js(1).do" type="text/javascript"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/MiniEditor-min.js.download"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/jquery.cookie.js.download"></script>
+<style type="text/css">.bottomsharebox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.bottomsharebox .shareshadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10000;
+}
+.bottomsharebox .share {
+  position: fixed;
+  z-index: 10001;
+  background-color: #fff;
+  bottom: 0;
+  width: 100%;
+}
+.bottomsharebox .share .sharetitle {
+  text-align: left;
+  height: 50px;
+  line-height: 50px;
+}
+.bottomsharebox .share .sharetitle:before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  top: 20px;
+  left: 5%;
+  z-index: -1;
+}
+.bottomsharebox .share .sharetitle div {
+  background-color: #fff;
+  font-size: 1.6rem;
+  display: inline-block;
+  padding: 0 40px;
+}
+.bottomsharebox .share .sharecancel {
+  background: url(http://i0.jrjimg.cn/mjrj_v2015/gbshare.png) no-repeat; 
+  margin: 0 auto 10px;
+  background-size: cover;
+  width: 40px;
+ height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.zwmiddleshare .share .sharetitle {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+}
+.zwmiddleshare .share .sharetitle:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #D2D2D2;
+  top: 19px;
+  left: 0;
+  z-index: -1;
+}
+.zwmiddleshare .share .sharetitle div {
+  background-color: #fff;
+  display: inline-block;
+  padding: 0 10px;
+}
+.zwmiddleshare .share .sharebtns {
+  padding: 0px 0 10px 0;
+  text-align: center;
+}
+.share .sharebtns {
+  padding: 10px 0 20px 0;
+  text-align: center;
+}
+.share .sharebtn {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+  line-height: 25px;
+}
+.share .shareimg {
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+  margin: 0 auto;
+}
+.share .pyqimg {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAL9UlEQVR4nN2ceXRU1R3HPzOZzCQzWcgyAbISNqkQ1hAEKVhoURStWpfa9rTFViwoZQkgxIAoq0BYipaDe22tR2IVlYpwDliEglkIS8BStgBZMJlJIMtMZiaTmf7xJsNMMsubNxOUfs7JSea9e+/v9755c+/vrrIJn2RzE5ABg4DRQBYwAMgEEoEYIMqRrgVoAvRABXAOKAdKgDOAvbsdVXRj2WpgGvAAMAXQisgT5fhJBoZ2uqcD9gKfArsAY8g8dUHWDW/IKOAZ4FFu/OdDTQtQCGxDeHtChjyEZf0I2A+UAtPpPjFwlD0dKAYOOGyHhFAIcjuwG0GMkDkWABMctnc7fAmKYARRASuAY8A9wToSAu4BjgMrEXyThFRB+gKHgHxAKdV4NxAOPI/gW18pBUgR5BGEt+KmtNcSyUbw8ZFAMwYqSB6wAyF2+L4Tg+BrXiCZxAoiAzYCqxx/3yrIEHwuQKTfYgUpAOZJdOr7wHxgtZiEYgRZzK0tRgeLgbn+EvkT5GeIVPYWYSN+KlpfgvQF3uTWqjP8IQPewEeT7E0QJUINHdsNTn3XxCL0gzzGT956u3kInbRuYXLK3WRrc+gXM4Be6t7EKnsAYLPbaG5rotpQSUXzRY7ryyjVFdFgrg+1CyMRnnF55xueerv9EcYgIkJlXYaMsT3HkxqVxo4Lf2dq2jQWj3hBVF6b3UaproiCk2v41ng1VC4BmBDGZs67XvT0hvyJEIoxSpvD7CHzyYzuB0C4XMl7596hf+xtPNL3537zy2VycpLG0kudjLndTP+YgZTovg6FaxHAVmCq68WwjCeSXT+PJ0StilqhZtHwfGYNnkucKt55fZQ2hyZLE3899yZZCcNJVqeIKu+Lyl1oFBq23LmdFE0aZfoS2myWYN3sD+wDrnRc6FypBhTmeiNFk8brE//GlNR7Pd6fk7WAe9MfYHnpYmqM1aLKtLSbSYrsCcCU1Km8NuFdMqIzQ+Gu2zO7CjKKTq+PFAbGDmLbD98iVZPmM13u0CWMSRpHXtF8Wq3+RwMtNgvxEYnOz6maNLbe+RoDYwcF6/JUhEoWcBdkVrAlZ0RnsmHsVmer4Qu5TE7eiBdJ1qSysmyZqPITXQQBiFX2YMPYraT4EV8EM5x+OX5rgMeDKVETHsXqnAJRYjiNy+S8lP0yFpuFt85s95m21dqKNqJnl+uxyh6su2MLaoU6YJ9deAzHoFKHIPchiCKZuVmL/H5NPKGQK1g5ej2nGk5w4Op+r+na7VbiIxI83kvVpDFv6HMB23YhDrgfbgjy02BKG629gymp0qsfVZiKFTnr+ahiBxeaznlNp41I8npvSuq9jEocLdkHhCkTZBM+yZYBtYibN/FInCqeZHUKSZE9iY9IRBuhJTEiifiIBLQRSSRGaEW90gargeWlS1g6cgUxSvdew327J1H4k10+y6lovsD0L5/ALm0+qxJIVwC3EYQYvdS96aUWYpna1loqDUKT3mptpd1uBcDQZkAVpiJelYA6XEOCKlEQT5VAYoQWbWQSCaoEtJFJ5I98iVdPb2bR8HzCZGFOO6owlV9RM6P7MbbneA7XHpTyKGlAfwXC9KJkcocuISdpbMD5agxVPFc0jystl9yuxyhjUMjC2XqqgLlZi5zXE1SJiCFFkxqwLy6MlwPDpOaOVyWQrR0TcL7yhuPMOvS7LmIANFmaaDDX83FFIbsu73ReV4f7r/Nf+8+rFF58P2B/XMiSI4SvksjWjkEuC2ycetflncw7PItr5ga/aTeXr6O84QTg/w3ZUr6B9869w9S0aUxOuTsgn1wYIAfSpeYekSh+hKDd3s6mky+z/sQq2mxtovK02dpYWrKIakOlM2zvjM1uY/2JVey8VMjsIbksHvECo7SSa4FUBUIbLIk+IvsSjZbrbDu9haK6IwHbuGZuYHHRfO7PeKjLPZvdxupjL1BUd5gNY19xNrv9YwYGbMdBnByIlppbTMh8oekcK8uWMXPwHKx2cW9GZ660XCIxwr0htNqs5Jcs5HzjWbZPeNctBuml7i3JDhCtIAhBosN9z1f9q2YfH18qZHVOAeHycJosTVJNoY28EZSZ283klyxEKVey7YdvE9mpOQ6k+9CJ6KAWzPiqUN86s51TDSdYk7MRtUJNjaEqGFMkqISw3WA1sLR4IUPih/HkoKeDKtMTCqAZ8NxJkECr1cjKsmVYbBbWjNmEKkyYiK8PclxUG5mEwWogrziXhzMfY2LvSV7T2uw2qWaa5QiCSKLRct3tc42hipkHp2PHzpqcjU4xAHStdVLNEKOMwWg1srx0CX8ckutTDIDmNslfzRY5cE1qbtdB36P6Ep4++Bv6xw5k5ej1KOTu30a9SUd6VB9JdhSycLad3sLSkSvoFzPAb/pqQ6UkO0CDHJfxxEDp6JkWXnyfBUeeZULvSeSNeNFj3dJg1rN2zEa38VWxTEyexMLh+V06fN6oaL4YsA0HVQo6DcMHQqmumJP1x9hduYuHMx9nTtYCr2nrWutI0aSxYvQ65h2eKSo4C5eHMzdrEdMyHgzIr+P6soDSu3BODpyUmntf9R52V+7ilwN+61MMgHqzHoCs+GFunTZvxKni2TRuW8BidMzjSKRcgbCSTzKP9n2CGT94xm86Y5vB+fe0jAc533SWAzX7sdrbusQn6VF9WDtmo6Sx0iBn+g4pgP8irBwW17/uRLXI+KLjDelg9pBcTNZWZg6eg1qhRtdaR725Hl1rHXqTjs8u76SutZZ6sx5jm4EGcz2mdhNR4cJqzzCZgkhFJABKuRKlo0X71lgj5TFAGCA6r0BYLr0X+IWUUo7UHqKi+YJzZs4TRqsRc7vZ7VqYLIxZg+eyomwpy7PXkKxJJdnPWIbRakRv0qE31VFvqkdvqkNn0tFg0qMz1VFtqBLVi/bCl3BjKvMTJApix87W8gI2jvuz1zR6k875n3UlRhnLH26fTV5xrjOi9YVaoSY9KoP0qAyP93OPPBtM/fEZ3Bhk/idg8J7WN0f1Jeyt+tzrfZ3Je1DWL2YAD/V5lPziBV3eokDYW7U7GDGu0UkQA8J6EMlsOvkyVV4CogZTPWEy792mu5InMyR+GPklC7HarAHbrjJUsrl8XcD5XNgBmMF95s77Oy8Co9XIoq/ndAnnAXSmWmcF6I0nBz2NUq5kWelzAfVFGi3XySvOxdDWErDPLrze8YerIKXAnmBKrTZUsuDI7C6i6E16LzncyR/5EjWGKlYfe0GUKI2W6yw4MpvLzRWS/HWwBzja8aFzjL0ymJIBzjaeYfa/Z7h9fRpMepRy/8vPIxVqVucUUFR3mIKTa3ymrTJUMvPgk5xtPBOsy6tcP3QW5BDwRbAWLjdXMOOrX7O3ajcAda21KMPELYlP1qSyPHstn1/5lC3lGzym2Vv1OU8d+FUwnbgO9gBukzidF8yAELk+RZC7rdpsFg5e/ZLTDeVcbrlED1UcU9OmicqbrE5BEx7FX86+QZutjVHaHECYmVtxNJ8PLrwneqDaByaE3V5ugYsnQRoQdhXcFaxFgBpjFab2VmTISI/qQ291CjKZ/5Weg+OyqDVe5aOKHRjaWvi4opBXTm0SvcBGBKuBf3S+6G2LmRI4gstCklDRMbk1PHEkmdF9SdGkER0e4xwyaLRc51vjVc43neWoroR91UHV894oA8bhaGpd8bXnrq8j4//bWtVGhNVSFzzd9DXtdhH4PTdha+hNxI7wTB7FAP9r3T8kRAvxvifkITyTV8RMzK4FNofEne+WzQjP4hOxM9XzubVF2YzwDH4RK4gdYc9MPrdWnWJH8HkeIv0OdM/dKoQVe9LnJG8eTQi+rvKX0BUpuzI/RGi2SiXkvVmUIuzM9FmBekLqvt3z3FgXH3QMHUKsCD6NRzhZImCC2dltRtg0PJwQdAhDwBcIy8Oex0MEKpZQ7P3/BmG9+GTgqxCUFyhfAT92+PBNsIWF8nSI/cBEIAd4G+FIi+6ixWEjx2FzX6gK7o7zQzrQIKwOvh/xB6r4ouNAlc8QDlSRPCjui+48YcYAfOD46ThyJwcYgrBYOAPhHJA43I/cueb4fRk4i7DdrZibdOTO/wAJObeaGiUqRgAAAABJRU5ErkJggg==);
+}
+.share .wxhyimg {
+  background-image: url(data:image/png;base64,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);
+}
+.share .sinaimg {
+  background-image: url(http://i0.jrjimg.cn/mjrj_v2015/icon_xinlangweibo_red.png);
+}
+.share .qqhyimg {
+  background-image: url(data:image/png;base64,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);
+}
+.share .qqzoom {
+  background-image: url(http://i0.jrjimg.cn/mjrj_v2015/icon_qqkongjian_yellow.png);
+}
+.share .wximg {
+  background-image: url(http://i0.jrjimg.cn/mjrj_v2015/icon_weixin_green.png);
+}
+.share .pybbtn,
+.share .wxhybtn,
+.share .qqhybtn{
+  display: none;
+}
+.wxsharediv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.wxsharediv .sharemask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+}
+.wxsharediv .shareimg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10001;
+  width: 338px;
+  height: 391px;
+  left: 50%;
+  margin-left: -169px;
+  top: 50%;
+  margin-top: -196px;
+}
+.wxsharediv .shareimg img {
+  width: 338px;
+  height: 391px;
+}
+.wxsharediv .sharehand {
+  position: fixed;
+  z-index: 10001;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 68px;
+  background-image: url(http://i0.jrjimg.cn/mjrj_v2015/hand.png);
+  background-repeat: no-repeat;
+  background-size: 40px 68px;
+}
+</style></head>
+<body style="background:#f7f9f8;">
+	<!--head-->
+	﻿<!------------------------------m站点头部开始------------------------------>
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/jquery.jcarousellite.pauseOnHover.js.download"></script>
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/userInfo.jsp"></script>
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/index2015.js.download"></script>
+<script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/mobileBrowserType.js.download"></script>
+<script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/bookmark_bubble.js.download"></script>
+<script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/page.js.download"></script>
+<header>
+	<div class="headmain jrj-clear">
+        <div class="btntop"><b class="aww_top_fc" style="display:none;"></b><input type="button" class="searchBtn" onclick="javascript:location.href=&#39;/search/&#39;"><input type="button" class="collectionBtn">
+        </div>
+        <a href="http://m.jrj.com.cn/"><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/icon_v2.png" height="35px" style="padding: 3px 0 0 10px;"></a>
+          <div class="h1">手机金融界</div>
+    </div>
+</header>
+<!--修改位置和添加样式-->
+<style type="text/css">
+header.noposf{position:static;padding-top:28px;background:#ccc;}
+article.textmain_one{padding:0 2%;}
+</style>
+<header class="noposf">
+    <div class="login_hd" id="login_before" style="display: block;"><a href="http://m.jrj.com.cn/sso/mobileToRegister?from=mSite&amp;ReturnUrl=http://m.jrj.com.cn/madapter/futures/2017/02/22140422090135.shtml" class="btnone jrj-fr" id="regUrl">注册</a><a href="http://m.jrj.com.cn/sso/mobileToLogin?from=mSite&amp;ReturnUrl=http://m.jrj.com.cn/madapter/futures/2017/02/22140422090135.shtml" id="loginUrl" class="btnone">登录自选</a></div>
+    <div class="login_ok" id="login_after" style="display:none">
+    	<a href="http://m.jrj.com.cn/mystock/index.jspa" class="more_login">更多自选</a>
+        <div class="login_inf" id="userInfo"><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/default_m.jpg" width="30" height="30"><span></span></div>
+        <div class="sj_login">
+        	<div class="JQ_contact_box" id="zxginfo"></div>
+        </div>
+    </div>
+</header>
+<!--修改位置和添加样式-->
+
+<!------------------------------m站点头部结束------------------------------>
+
+    <article style="padding-bottom:90px; " class="textmain_one">
+		<!--生成股票代码数组开始-->
+		<script>var code=['000061',];</script>
+		<!--生成股票代码数组结束-->
+			 <p class="zwy-mbx">
+				<!--索引开始-->
+				<!--jrj_final_daohang_start-->
+<a href="http://m.jrj.com.cn/">首页</a> &gt; <a href="http://futures.jrj.com.cn/">期货频道</a> &gt; 正文
+<!-- 导航条end -->
+<!--jrj_final_daohang_end--><!--jrj_final_ID_start--><input id="NewsId" name="NewsId" type="hidden" value="22090135"><!--jrj_final_ID_end-->
+<input id="StockNo" name="StockNo" type="hidden" value="">
+<input id="allowLraveword" name="allowLraveword" type="hidden" value="1">
+<input id="chid" name="chid" type="hidden" value="107">
+<input id="clsid" name="clsid" type="hidden" value="001004">
+<input id="keyid" name="keyid" type="hidden" value="CF43F7F056F728628523554BE67368FA">
+<input id="importentnew" name="importentnew" type="hidden" value="1">
+
+				<!--索引结束-->
+			</p>
+        <!--索引开始-->
+        <section class="w956">
+            <h2 class="hd">
+                
+<!-- 标题Start -->
+<!--jrj_final_title_start-->重磅干货：万字长文解析全球商品期货量化交易策略
+<!--jrj_final_title_end--><!-- 标题end -->
+
+            </h2>
+            <dl class="wypl jrj-clear">
+                <dt class="address">
+                   <p class="time"><!--jrj_final_date_start-->
+2017-02-22 14:04:52<!--jrj_final_date_end-->
+ </p> 
+                  
+                   <p class="time"><!--jrj_final_source_start-->中信建投策略<!--jrj_final_source_end-->
+</p>
+                </dt>
+                
+																						<dt class="pllink fr">
+                   <a class="fr" href="http://itougu.jrj.com.cn/actm/fsz-activity?bizsource=mSite&amp;tgqdcode=S2CAWJMH&amp;type=video" title="">四招助你账户腾飞</a> 
+
+
+                </dt> 
+
+            </dl>
+					 <!--新闻内容 begin-->                
+						<div class="wenzi">来源： 安尉 王君 李而实 来源 | 中信建投策略 
+<p>全球商品期货量化对冲基金及产品介绍商品期货交易源远流长，分布广泛。商品期货品种繁多，因此可以通过多品种投资有效降低回撤。另一方面，商品期货市场与股票市场有着相对较低的相关性，因此经常被作为分散投资、降低风险的良好标的。海外有相当多的对冲基金同时投资于大宗商品、股票、外汇等市场，而国内的基金公司也开始逐步关注商品期货市场。这篇报告介绍了海外部分主要投资于商品期货的量化对冲基金，同时对国内商品期货市场上的量化基金做了概述。</p>
+<p>常见商品期货交易策略除套期保值之外，以博取收益为目的的常见商品期货交易策略包括套利策略、短线投机策略和中长线趋势策略。套利策略我们主要介绍跨期套利、跨市场套利和跨品种套利。在这一部分，我们对可供套利的期货市场和期货品种均做了介绍。短线投机策略与中长线趋势策略部分，我们主要对海内外部分经典交易策略做了介绍，为新策略的研究设计做铺垫和准备。</p>
+<p>商品期货中长线策略建模及实证商品期货的中长线策略在海外对冲基金中非常常见。一方面中长线策略与短线策略的相关性较低，可用以分散投资、降低风险；另一方面中长线策略对交易系统的要求相对较低。在这一部分，我们选择上面提到的几个中长线策略做实证研究，并将我们前期报告提出的 LLT低延时趋势线用于商品期货的趋势判别。研究发现，通过多个品种分散投资，确实能有效降低回撤，分散投资风险。</p>
+<p><strong>一、全球商品期货量化对冲基金及产品介绍</strong></p>
+<p>我们前期发表了二十余篇关于股指期货的交易策略报告(详见另类交易策略系列)。由于期货交易具有杠杆,风险和收益同时被放大,因此有些策略为了避免较大回撤而引入止损机制。但由于证券市场的厚尾效应,止损机制同时会使交易者错失部分盈利机会。</p>
+<p>相比较而言,商品期货在这方面有更灵活的处理方式。商品期货有多个品种(国内截止至今天共有 46 个品种),且各个品种之间相关性相对较弱。因此投资者可以选取若干个品种同时进行交易,通过分散投资有效降低回撤,也就避免了止损机制的引入。</p>
+<p><strong>(一) 商品期货量化对冲基金概述</strong></p>
+<p>近年来,商品期货已经获得越来越多量化投资者的关注。投资于商品期货,一是对抗通货膨胀的一种方式,二是可以减弱投资组合的风险,因为商品期货与其他类型的资产的相关性一般较低。</p>
+<p>那么,商品期货市场本身主要有哪些风险呢?第一是通货膨胀:许多国家现在仍实行低利率以及较大的财政赤字。负的实际利率很可能导致商品市场的通货膨胀。第二是政治风险:例如贸易禁令、战争、恐怖袭击等。1973 年的石油禁运,导致了能源价格出现了急剧上涨。第三是极端的气候:例如霜冻、飓风、海啸等。当这些灾难性的的气候出现时,许多商品期货的价格会出现猛涨。</p>
+<p>商品期货的量化策略,按持仓时间分类有短线和中长线之分。根据海外多个商品期货市场的测算结果,短线策略经常有更低的回撤,尤其是在一些极端情况之下 (例如 2008-2009 年的金融危机),而中长线策略则容易产生更好的收益。因此,同时使用短线和中长线策略可以同时平衡收益与风险。</p>
+<p><strong>(二) 海外商品期货量化对冲基金及产品介绍</strong></p>
+<p>1、GloBAl-Macro-Universal</p>
+<p>Global-Macro-Universal是德国 vonPreussen-Hohenberg ManaGEment AG 公司旗下的产品。该公司于 1988 年在德国苏黎世成立,活跃于全球的大宗商品和外汇交易市场。</p>
+<p>Global-Macro-Universal主要投资于全球的大宗商品,同时也投资于外汇和股指:大宗商品(包括金属、能源等)占60%,外汇占 30%,股指占 10%。该产品在量化的基础上采用多策略组合,24 小时挖掘全球市场的短线、中线、长线投资机会。该产品自 1988 年成立,至今持续保持盈利,累积收益达23465.63%,年化约 22%, 最大回撤-11.23%。Global-Macro-Universal的净值曲线如图 1 所示。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140452403.jpg" width="100%" alt=" 640.webp (8).jpg"></a></div><br><p></p>
+<p>2、Emil van Essen Spread TrADIng Program</p>
+<p>Emil van EssenSpread Trading Program 是芝加哥Emil van Essen 公司旗下的产品。该公司专注于衍生品交易,于2008 年 8 月注册为 CTA 和CPO,并在 2011 年 3 月成为NFA 会员。</p>
+<p>Emil van Essen Spread Trading Program 主要通过跨期套利和相对价值交易来获取阿尔法,交易品种主要包括原油、燃料油、天然气、玉米、小麦、大豆、银、活牛、瘦肉猪、糖、铜和咖啡。该产品收益率与多个基准,包括 CTA、商品指数、股票指数都很低的相关性。</p>
+<p>该产品于 2006 年 12 月成立,直至现在仍是公司的旗舰产品。成立至今累积收益达 306.43%,最大回撤-36.21%。Emil van Essen Spread Trading Program 的净值曲线如图 2 所示。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140452642.jpg" width="100%" alt=" 640.webp (9).jpg"></a></div><br><p></p>
+<p>3、CommodityLong-Short Program</p>
+<p>Commodity Long-Short Program 是 Red Rock CApital 公司旗下的产品。Red Rock Capital 是芝加哥一家屡获殊荣的大宗商品投资管理公司,在量化和系统化的投资管理上的卓越表现获得了无数次认可。该公司于 2003 年9 月成立,至今已接近 12 周年,仍在资本市场上快速成长。</p>
+<p>Commodity Long-Short Program 采用一种独特的量化模式识别技术,捕捉商品期货价格在短线或长线上的方向性突破。这些模式是无法使用肉眼观察的。该策略既可以追踪趋势,又可以判断反转。交易中平均持仓时间为 9 个交易日。最重要的是,该产品与Newedge Trend CTA Index(实时追踪CTA 每日平均绩效的指数)具有低至 0.14 的相关系数。该产品于2013 年 9 月成立,直今不到2 年,累积收益达 65.01%, 最大回撤-5.92%。Commodity Long-Short Program 的净值曲线如图 3 所示。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140452882.jpg" width="100%" alt=" 640.webp (10).jpg"></a></div><br><p></p>
+<p>4、Deutsche Enhanced Commodity Strategy Fund<br></p>
+<p>Deutsche EnhancedCommodity Strategy Fund 是Deutsche Asset &amp; Wealth Management 公司的产品。Deutsche Asset &amp; Wealth Management 公司是世界上历史最悠久,规模最大的金融机构之一——德意志银行集团的支柱,管理超过 1 万亿美元的资产,服务于40 个国家约 250 万客户。</p>
+<p>Deutsche EnhancedCommodity Strategy Fund 是一个指数增强型基金,主要使用三个投资策略:相对值策略,趋势策略,滚动增强策略。相对值策略是该基金使用一个独有的量化计算方法来确定各个商品品种的权重。该基金在设定的事件触发时,才调整各个商品的权重,减少价值高估的商品权重,增加价值低估的商品权重。趋势策略主要用于整个商品市场。该基金通过一个私有的基于动量的量化公式来预测商品市场的方向。当发现商品普遍高估时,将调低所有商品品种的持仓。滚动增强策略主要用于处理不同月份之间的合约交割问题。</p>
+<p>Deutsche EnhancedCommodity Strategy Fund 的净值曲线如图4 所示。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140453095.jpg" width="100%" alt=" 640.webp (11).jpg"></a></div><br><p></p>
+<p><strong>二、常见商品期货量化交易策略</strong></p>
+<p><strong>(一) 商品期货套利策略</strong><br></p>
+<p>套利策略一般包括期现套利、跨期套利、跨市场套利、跨品种套利等。</p>
+<p>对于商品期货而言,期现套利必须交易大量的商品实物,这对大多数机构投资者而言并不合适。因此,我们仅介绍跨期套利、跨市场套利和跨品种套利。</p>
+<p>1、跨期套利</p>
+<p>跨期套利的思路一般如下:对某一品种主力合约和次主力合约的价差做统计(一般是厚尾分布),然后选取恰当的分位数设定阈值,则可进行反转套利。我们前期的报告《趋强避弱商品期货套利策略》中对其已有详细的研究,在此就不赘述了。</p>
+<p>2、跨市场套利</p>
+<p>跨市场套利即对同一期货品种在不同市场间进行套利。国内3个商品期货交易所并没有重复的品种,因此跨市场套利一般在国内和海外的期货交易所之间进行。对于同一种商品,交易所与原产地的距离会影响价格。</p>
+<p>相对于其他套利方式,跨市场套利有着一些特有的风险。例如,套利的效果会受到汇率变动的影响,交易所制度的不同(如涨跌停板制度、交易时间等)也在一定程度上影响套利。</p>
+<p>对于国内投资者而言,主要有以下几个海外市场可供套利:</p>
+<p>(1) 芝加哥期货交易所（CBOT）</p>
+<p>芝加哥期货交易所成立于1848年,是一个著名的期货、期权交易所,2006年10 月17日与美国芝加哥商品交易所(CME)合并成芝加哥商品交易集团,成为全球最大的衍生品交易所。</p>
+<p>芝加哥是美国最大的谷物集散地,而芝加哥期货交易所早期也已有<a class="stbu" href="http://stock.jrj.com.cn/share,000061.shtml">农产品</a>的交易,如大豆、玉米、小麦。经过漫长的发展,现在的交易系统已经非常稳定和成熟。因此,国内大商所的大豆、玉米,郑商所的强麦,均可与其进行跨市场套利。</p>
+<p>(2) 伦敦金属交易所(LME)</p>
+<p>伦敦金属交易所成立于1876年,是世界上最大的有色金属交易所。伦敦金属交易所采用国际会员资格制,绝大多数的交易来自于海外市场。交易所的交易品种有铜、铝、锌、铅等有色金属,可以与上期所相应的金属期货进行跨市场套利。</p>
+<p>(3) 马来西亚衍生品交易所(BMD)</p>
+<p>马来西亚衍生品交易所具有世界上最具流动性和运作最成功的毛棕榈油期货 (FCPO)合约。</p>
+<p>2009年9月17日,马来西亚衍生品交易所已与芝加哥商商品交易所(CME)建立战略伙伴关系,以实现全球无障碍的衍生品流通。马来西亚衍生品交易所通过全球期货电子交易系统,使FCPO成为世界棕榈油价格的基准。</p>
+<p>马来西亚衍生品交易所的毛棕榈油期货可与我国大商所的棕榈油期货进行跨市场套利。</p>
+<p>(4) 纽约商品交易所</p>
+<p>纽约商品交易所分为NYMEX和COMEX两个部分,其中NYMEX主要进行能源类商品的交易,而COMEX主要进行金属类商品的交易。COMEX具有全球最大的黄金期货交易市场,同时也有银、铜、铝等期货和期权合约。</p>
+<p>纽约商品交易所具有建立在网络上的电子交易系统,使得交易者几乎可以24小时进行交易。我国上期所的多个金属类期货可以与其进行跨市场套利。</p>
+<p>(5) 东京工业品交易所(TOCOM)</p>
+<p>东京工业品交易所成立于1984年11月1日,是一家综合商品交易所,曾经是世界上最大的橡胶交易所。</p>
+<p>其前身为成立于1951年的东京纺织品交易所、成立于1952年的东京橡胶交易所和成立于1982年的东京黄金交易所,上述三家交易所于1984年11月1日合并后改为现名。</p>
+<p>东京工业品交易所的橡胶期货合约(RSS)于1952年12月12日上市交易,是世界上最早的天然橡胶期货合约。日本作为橡胶的消费国,RSS合约至今仍有足够的成交量。因此,可与我国上期所的橡胶期货进行跨市场套利。</p>
+<p>3、跨品种套利</p>
+<p>跨期套利常受制于合约流动性,相比而言,跨品种套利可以容纳更大的资金, 具有更好的实际操作性。</p>
+<p>跨品种套利的思路一般如下:选取相关性强的两个品种,计算价格比值。根据价格比值的走势可以采取趋势套利和反转套利两种方式,具体的实现方式则有多种。例如,趋势套利可以使用移动平均线等方式,而反转套利可以使用统计价格比值设定反转阈值的方式。我们前期的报告《跨品种套利策略研究》对趋势套利型的跨品种套利做了研究。</p>
+<p>跨品种套利的品种选择一般有两类。一是选择产品与原材料,二是选择能互相替代的产品。具体国内市场而言,跨品种套利一般可以在以下品种中进行:</p>
+<p>(1) 螺纹钢与铁矿石、焦炭钢铁生产中最重要的原料就是铁矿石,其次是焦炭。</p>
+<p>钢铁生产的技术流程现已十分成熟,没有大的变化。生产1吨生铁,大约需要1.5-2吨的铁矿石,0.4-0.6吨的焦炭。因此,钢铁的价格基本上取决于铁矿石与焦炭的价格。钢铁与铁矿石的相关性很强,与焦炭的相关性次之。</p>
+<p>(2) 大豆与豆油、豆粕</p>
+<p>豆油是常用的食用油,而豆粕则可以作为动物饲料。压榨加工大豆,可以产出豆油并剩下豆粕,因此这三者之间可以进行跨品种套利。一般而言,100%大豆=18.5%豆油+80%豆粕+1.5%损耗。</p>
+<p>(3 焦煤与焦炭</p>
+<p>焦煤是焦炭的上游产业,按照现在的生产技术,1.3吨焦煤可以产出1吨焦炭。因此,二者价格相关性强,可以进行跨品种套利。</p>
+<p>(4) 热轧卷板与螺纹钢</p>
+<p>热轧卷板是一种钢板,以板坯为原料,加热之后进行粗轧和精轧后产出。热轧卷板作为一种重要的钢材,广泛应用于基建、船舶、汽车等领域。</p>
+<p>热轧卷板与螺纹钢同为钢材,原材料成本相近,因此两者价格具有较好的相关性。然而,由于下游消费市场具有差异,两者短期的供需关系会有不同,也就提供了套利机会。</p>
+<p>(5) 豆油、棕榈油与菜籽油</p>
+<p>豆油、棕榈油与菜籽油均为食品添加剂,互为替代品。一般的,豆油与棕榈油、豆油与菜籽油的相关性较强,而棕榈油与菜籽油的相关性则相对弱些,因此推荐使用豆油与其他两个品种进行套利。</p>
+<p>豆油的原料大豆主要产自于美国、巴西及阿根廷,而棕榈油则一般产自于印度尼西亚和马来西亚。由于不同地区的气候差异等因素,豆油与棕榈油的价差往往会出现波动,为投资者提供了套利机会。</p>
+<p>由于菜籽油营养更为丰富且原料价格高,菜籽油的价格一般高于豆油,两者的价差一般较为稳定。同样的,价差受到季节性气候等的影响,会出现一些跨品种套利机会。</p>
+<p>(6) 强麦与玉米</p>
+<p>强麦指强筋小麦。小麦和玉米是世界范围内的两种重要农作物,在粮食和饲料市场中占据相当大的份额。两者互为替代品,价格具有同涨同跌的大趋势。但由于两者的收获季节不同,受气候等因素的影响也不同,因此价差会出现波动,提供跨品种套利机会。</p>
+<p><strong>(二) 商品期货短线投机策略</strong></p>
+<p>1、R-Breaker 策略</p>
+<p>R-Breaker是一个日内的短线交易策略。一般使用1分钟、5分钟和10分钟的交易数据。R-Breaker策略根据上一交易日的收盘价、最低价、最高价,加上3个模型参数计算出6个价位,从大到小分别为:突破买入价、观察观察卖出价、反转卖出价、反转买入价、观察买入价、突破卖出价,根据这6个价位进行相应的开平仓,既可以追踪趋势,又可以判断反转。具体的交易规则如下:</p>
+<p>(1)若日内最高价超过观察卖出价后,又下跌跌破反转卖出价,则采取反转策略,平仓多单(若持有多单)并开仓做空;若日内最低价超过观察买入价后,又上涨突破反转买入价,则采取反转策略,平仓空单(若持有空单)并开仓做多。</p>
+<p>(2)若空仓,当价格上涨超过突破买入价时,采取趋势策略开仓做多;反之, 下跌超过突破卖出价时做空。</p>
+<p>3个模型参数可以改变6个价位之间的距离,优化模型效果。实际上,这6个价位可以认为是平常所说的“阻力位”和“支撑位”概念。</p>
+<p>2、Dual-Thrust 策略</p>
+<p>Dual-Thrust策略实际上是对传统开盘区间突破策略的一个改进。两个策略均是对当日开盘价加减某个数(记为Range),获得一个区间,突破区间上轨做多,突破区间下轨做空。开盘区间突破策略通过前一个交易日的最高价和最低价确定Range的值,而Dual-Thrust策略使用前N日的4个价格(前N日最高价HH、前N日最低价LL、前N日最高收盘价HC、前N日最低收盘价LC)来确定Range的值。并且引入更多参数,使得通过Range确定的区间可以是非对称的。</p>
+<p>具体算法如下:</p>
+<p>Range =Max(HH-LC,HC-LL) 价格区间上轨:开盘价+K1*Range 价格区间下轨:开盘价-K2*Range</p>
+<p><strong>(三) 商品期货中长线趋势策略</strong></p>
+<p>在这一小节,我们主要介绍4个商品期货中长线趋势策略:均线策略、通道突破策略、动量策略、Aberration策略。</p>
+<p>根据海外商品期货市场的实证研究,均线策略与通道突破策略比动量策略更加有效,且更加稳定。从1959年到1995年,均线策略与通道突破策略在各种参数之下都能有很好的表现,而动量策略虽略逊一筹,但也保持正收益。1996年到2007年, 三个策略的表现都出现了下降,但均线策略与通道突破策略仍在多个参数组合下有良好表现,而动量策略则差强人意。</p>
+<p>上述3个策略可以说是古老而经典的策略。相比而言,Aberration则是更加成熟的交易系统,它曾在美国《Futures Truth Magazine》的交易系统排行榜上名列前茅。长期看来,Aberration交易系统保持很好的稳定性。</p>
+<p>1、均线策略</p>
+<p>均线策略使用两条移动平均线来判断趋势。当短周期均线(STMA)超过长周期均线(LTMA)B%时做多,当短周期均线落后长周期均线B%时做空。也即:STMA&gt; LTMA *(1+B)时做多,STMA&lt; LTMA *(1-B)时做空,LTMA * (1-B)2、通道突破策略</p>
+<p>在海外,该策略同样常用于月线数据。当某个月收盘价超过前面L个月的收盘价的最大值时,则做多;低于前面L个月的收盘价的最小值时,则做空。对于该策略, 有投资者会规定一个持仓时间,例如持仓L个月;另外也有投资者会一直持有到相反的开仓信号出现。通道长度L的取值有多种,常用的取值有3,4,5,6,9,12个月等。<br></p>
+<p>3、动量策略</p>
+<p>有研究人员认为,市场的上涨或者下跌趋势具有动量效应,能够维持一段时间。动量策略也就据此提出:首先选出3个商品期货品种,然后在过去的L个月内进行收益率排序,并对排第一的品种开多单,排第三的品种开空单,持仓时间均为1个月。L可以取1,2,3,6,9,12个月等。</p>
+<p>4、Aberration 策略</p>
+<p>Aberration交易系统由Keith Fitschen于1986年发明,1993年Keith Fitschen 将该系统商业化发布在Future Trust杂志上。Aberration策略根据布林线做交易: 向上突破上轨做多,向下突破下轨做空,回到中轨时平仓。我们知道,布林线是由移动平均线和标准差定义的。</p>
+<p>在正态分布的假设下,证券价格大部分会在布林线带内波动。Aberration策略的思想就是:在大部分的震荡时间中等待一个新趋势出现的小概率事件发生。因此,Aberration策略交易频率并不高,一般每年交易某个品种3-4次,平均每笔交易持仓60天,通过长线来获取利润。在海外市场,Aberration 策略中布林线的初始参数设臵为MA30±2 个标准差。另一方面,Aberration策略同时交易8个相关性较低的品种,包括商品期货和股指期货等,通过分散投资避开大风险。</p>
+<p><strong>三、商品期货中长线策略建模及实证</strong></p>
+<p>商品期货的短线 CTA 策略,与股指期货类似。我们在另类交易策略系列报告中, 已经对股指期货的交易策略做了详细的研究。因此,此小节主要介绍商品期货的中长线策略。<br></p>
+<p>商品期货的中长线策略在海外对冲基金中非常常见。一方面中长线策略与短线策略的相关性较低,可以用以分散投资、降低风险;另一方面中长线策略对交易系统的要求较低。</p>
+<p><strong>(一) 商品期货品种选择</strong></p>
+<p>我们知道,股指期货的策略有时会加入止损机制以避免较大的回撤,但止损机制也会对收益率造成一定的限制。商品期货一大好处是可以多品种交易,也就是通过多个期货品种之间的分散投资降低总回撤,从而避免止损机制的引入。</p>
+<p>那么,如何选择出最合适交易的品种呢?我们认为主要关注以下三个指标。</p>
+<p>一是波动率。波动率用以表征一个时间区间内证券价格的波动剧烈程度,可定义收益率的标准差,也可定义为收益率自然对数的标准差。波动率越大,价格变化越大越快。因此,对于CTA 策略,波动率大的品种一般可以提供更多更好的套利机会。</p>
+<p>二是保证金比率。保证金比率代表一个期货品种的最大杠杆。通过杠杆的放大作用可以弥补某些品种波动率上的不足。因此,保证金比率低的品种会更具吸引力。常用的期货品种的保证金比率如表 1 所示。</p>
+<p>三是趋势性。由于这一小节主要介绍中长线策略,而中长线策略一般是以跟踪趋势为主。对于趋势性的定量,可以通过对一个时间窗口内的证券价格进行线性回归,使用回归直线的斜率表征该品种的趋势性。</p>
+<p>另一方面,各个商品期货品种上市时间长短不一。为使测算结果更加可信,我们仅使用上市时间较长的品种。测算中我们选用的期货品种以及对应的上市时间、保证金比率、交易费用均在表 1 中给出。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140453299.jpg" width="100%" alt=" 640.webp (12).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140453710.jpg" width="100%" alt=" 640.webp (13).jpg"></a></div><br><p></p>
+<p><strong>(二) wind 商品品种指数</strong></p>
+<p>为了方便起见,在测算中我们使用 wind 商品品种指数代替商品期货主力合约。根据 wind 官方文档,wind商品品种指数的编制规则如下:</p>
+<p>wind 商品品种指数=∑合约最新价x每个合约权重其中:</p>
+<p>每个合约权重=每个合约持仓额/品种持仓总额品种持仓总额=∑每个合约最新价x持仓量x交易单位(双边计算) 根据以上编制规则,使用 wind 商品品种指数代替商品期货主力合约是合理的。</p>
+<p><strong>(三) 常见商品期货策略实证</strong></p>
+<p>在这一小节,我们从上文提到的商品期货交易策略中,选取了均线策略、通道突破策略、Aberration 三个策略在国内的商品期货市场上做实证研究。在实证中我们先在样本内选出若干个表现优秀的期货品种,然后同时用于样本外进行测算,最终给出多个期货品种的净值曲线。</p>
+<p>1、均线策略</p>
+<p>如上文所述,均线策略采用两条均线:短周期均线和长周期均线。当长周期均线向上穿过短周期均线时(即通常所说的“金叉”),认为市场处于多头趋势之中, 此时发出看多信号;当短周期均线向下穿过长周期均线时(即通常所说的“死叉”), 认为市场处于空头趋势之中,此时发出看空信号。</p>
+<p>我们在样本内使用 5、10、20、30、60、120、240这 7 个参数两两组合进行测算。在样本内的测算结果中,排除交易次数过少的组合之后,根据收益回撤比选取最优的 3 个期货品种组成等权投资组合,并在样本外进行测算组合收益率。</p>
+<p>(1) 实证说明期货数据:使用 wind 商品品种指数数据频率:日数据;交易成本:双边万分之二;保证金比率:见表1;成交价格:每日收盘价;品种选择:选择 2007 年之前上市的商品期货品种;时间区间:选取 2007 年3 月 14 日至 2015 年6 月 4 日共 2000 个交易日。</p>
+<p>其中前 1000 个交易日为样本内区间,后1000 个交易日为样本外区间; 收益率计算方式:由于是中长线策略,因此采用复利计算;</p>
+<p>(2) 实证结果表 2 给出了均线策略在样本内的测算结果(按收益回撤比排序前 10,已剔除交易次数少于 15 次的结果)。因此,选择TA 指数(MA5 和 MA60)、TA指数(MA10 和MA60)、沪铝指数(MA20 和MA60)构建组合,进行样本外的测算。</p>
+<p>样本外的测算结果如图 8 和表3 所示。可以看到,古老而简单的均线策略仍然有效,但表现不能算优秀。在样本内表现良好的沪铝,在样本外基本没有贡献收益。 TA 指数在 2015 年上半年出现了一个较大的回撤,但通过多个品种分散投资,可以降低总体的风险。投资组合的净值曲线和交易统计分别如图 9 和表4 所示。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140453853.jpg" width="100%" alt=" 640.webp (14).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140454203.jpg" width="100%" alt=" 640.webp (15).jpg"></a></div><br><p></p>
+<p>2、通道突破策略</p>
+<p>如上文所述,通道突破策略即收盘价向上突破盘整通道做多,向下突破盘整通 道做空。在实测中,收盘价高于前面 10 个交易日的最高价,则做多;低于前面 10个交易日的最低价,则做空。只有当出现新的开仓信号,才进行平仓;一旦开始交 易,整个过程中一直持有仓位。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140454542.jpg" width="100%" alt=" 640.webp (16).jpg"></a></div><br><p></p>
+<p>3、Aberration 策略</p>
+<p>如上文所述,Aberration 策略是依据布林线进行交易:突破布林线上轨做多, 突破布林线下轨做空,回到布林线中轨平仓。在实证中,我们沿用传统的 Aberration策略布林线参数,即为 MA30±2 个标准差。</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140454877.jpg" width="100%" alt=" 640.webp (18).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140455223.jpg" width="100%" alt=" 640.webp (19).jpg"></a></div><br><p></p>
+<p>4、LLT 趋势线择时策略</p>
+<p>在我们前期的报告《低延迟趋势线与交易性择时》中,我们介绍了一种判断趋 势的工具——LLT 低延时趋势线,并在华夏上证 50ETF、易方达深 100ETF、华安上证180ETF 和华泰柏瑞沪深 300ETF 上做了实证研究,并得出了满意的结果。LLT 的计算 公式</p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140455530.jpg" width="100%" alt=" 640.webp (20).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140455652.jpg" width="100%" alt=" 640.webp (21).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140455848.jpg" width="100%" alt=" 640.webp (22).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140456172.jpg" width="100%" alt=" 640.webp (23).jpg"></a></div><br><p></p>
+<p></p><div class="dqmmlc mt5"><a href="javascript:void(0);" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20170222140456331.jpg" width="100%" alt=" 640.webp (24).jpg"></a></div><br><p></p>
+<p><strong>四、总结</strong></p>
+<p>本篇报告对海内外的商品期货交易情况做了一个综述。首先,我们介绍海外和国内的商品期货量化对冲基金。商品期货的投资已在海外对冲基金中占重要地位, 在国内也逐渐引起投资者的注意和重视。</p>
+<p>随后,我们系统地介绍了商品期货的几种交易策略,包括套利策略、短线投机策略和中长线趋势策略。我们罗列了可供套利的海外期货交易市场以及可供套利的期货品种,又使用国内的商品期货数据对中长线交易策略做了实证研究。</p>
+<p>我们研究发现,商品期货是一个不容忽视的市场。一方面,商品期货与股票市场相关性较低,是分散投资的良好标的。在股票市场出现“黑天鹅”时,商品期货或能起到分散风险、降低回撤的效果。另一方面,商品期货品种繁多,通过多品种投资,同样能起到降低风险的作用。</p></div>
+<!--jrj_final_context_end-->
+                
+					<!--新闻内容 end-->
+           <!--爱投顾自选股-->
+             <div id="mydiv">
+             <div id="tishi" class="tishi"><h2>爱投顾提醒您，本文涉及以下个股:</h2><div id="ovjs" class="ovjs"><table><tbody><tr> <td class="hqclick">农 产 品<span>(000061)</span></td><td class="red">5.40</td><td class="red">+2.08%</td><td class="fr"><a href="javascript:void(0);" title="" class="madd cqhk" attr="0" id="000061">+加入自选</a></td> </tr></tbody></table></div></div></div>
+             <script>
+			 	var ok = true
+             	$(document).on('touchend','.moreBtn_stock',function(e){
+					if(ok){
+						$(".ovjs").addClass("ovjsauto");
+						$(".moreBtn_stock i").text("收起");
+						ok = false;
+					}else{
+						$(".ovjs").removeClass("ovjsauto");
+						$(".moreBtn_stock i").text("更多");
+						ok = true;
+					}
+					e.preventDefault();
+				})
+             </script>
+            <!--关键词-->
+                 <section class="mdtwo" style="padding:0"><strong class="hd bornone_del"><b>热搜</b><a href="http://m.jrj.com.cn/keywords/search?keywords=%E5%8F%8D%E8%BD%AC%E7%AD%96%E7%95%A5">反转策略</a> <a href="http://m.jrj.com.cn/keywords/search?keywords=%E4%BA%A4%E6%98%93%E7%AD%96%E7%95%A5">交易策略</a> <a href="http://m.jrj.com.cn/keywords/search?keywords=%E5%8A%A8%E9%87%8F%E6%95%88%E5%BA%94">动量效应</a> </strong></section><script>
+var miiid=22090135;
+</script>
+<iframe src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/rtcounter.html" width="0" height="0" style="display:none"></iframe>
+<iframe src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/counter.html" width="0" height="0" style="display:none"></iframe>
+<script>
+var appId='103001092';
+var appItemid=22090135;
+var itemTitle='重磅干货：万字长文解析全球商品期货量化交易策略';
+var itemUrl='http://m.jrj.com.cn/madapter/futures/2017/02/22140422090135.shtml';
+var detail='全球商品期货量化对冲基金及产品介绍商品期货交易源远流长，分布广泛。马来西亚衍生品交易所的毛棕榈油期货可与我国大商所的棕榈油期货进行跨市场套利。(2)若空仓,当价格上涨超过突破买入价时,采取趋势策略开仓做多;反之, 下跌超过突破卖出价时做空。';
+</script>
+
+                	<!--责任编辑 begin-->
+                <p style="font-size: 1.4rem;">责任编辑：左元</p>
+                <!--责任编辑 end-->
+        </section>
+		<!--碎片维护-->
+        <div id="wx_pic" style="margin:0 auto;display:none;overflow:hidden;width:0px;height:0px;">
+<img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/weixin_icon.png">
+</div>
+ 
+																						<section class="w956" style="padding:0">
+             <h2 class="hd border">
+                不可不看            </h2>
+            <ul class="bkbk">    
+                   <li><a style="color:red;font-weight:bold;" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jrj.stock.level2">找牛股，来金融界</a></li>
+                              <li><a href="http://itougu.jrj.com.cn/view/236885.jspa?channel=VC835Z48D&amp;tgqdcode=9433NXD6"><font color="">上善若水：6月大胜，7月一定如此！</font></a></li>
+                              <li><a href="http://itougu.jrj.com.cn/view/236877.jspa?channel=VC835Z48D&amp;tgqdcode=9433NXD6"><font color="">趋势巡航：下周一检验反弹的真假</font></a></li>
+                              <li><a href="http://itougu.jrj.com.cn/view/236876.jspa?channel=VC835Z48D&amp;tgqdcode=9433NXD6"><font color="">涨停王者：七月大翻身行情已经展开</font></a></li>
+                              <li><a href="http://itougu.jrj.com.cn/actm/ssjj18-activity?bizsource=mSite&amp;tgqdcode=LRR2ELTL&amp;type=video"><font color="red">大行情来临！抢反弹认准这8只股</font></a></li>
+                              <li><a href="http://itougu.jrj.com.cn/actm/yhcx-activity?tgqdcode=A9ZF9T2Q"><font color="">权益升级！288元尊享体验！</font></a></li>                            </ul></section>
+
+ 
+
+		 
+																						<section class="w956">
+           <div class="tptg mt5">
+              <a href="http://itougu.jrj.com.cn/actm/fsz-activity?bizsource=mSite&amp;tgqdcode=DZWPDJMG&amp;type=video" title=""><img src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/20180607144312548.jpg" width="100%" alt=""></a>
+           <!--   <a href='javascript:void(0);' class="mt5 pb8" title="">图片推广区推广区图片推广区推广区图片推广</a> -->
+           </div>
+        </section>
+ 
+ 
+											 
+
+        <section class="w956" style="padding:0;">
+            <h2 class="hd border" id="comment">
+                热门评论
+            </h2>
+            <ul id="rmpl" class="rmpl"><li class="bornone_del jrj-clear" id="showinfo">还没有人评论,赶快抢沙发啊!</li></ul>
+        </section>
+        <p class="loading_footer" id="more-test-btn" style="display: none;">加载中....</p>
+    </article>
+	<!--置顶按钮-->
+	<div class="zhiding" style="display: none;">
+		<a href="javascript:scroll(0,0)"></a>
+	</div>
+    <!------------------------评论弹出层开始------------------------>
+        <div class="pl_fc" style="display: none; width: 1684px; height: 828px;">
+            <section class="w597 jrj-clear">
+                <p class=""><button class="openBtnfl fl" id="closeBtn_pl">取消</button> <button class="openBtnfr fr">发送</button></p>
+                <textarea name="" id="text_one" cols="30" rows="10" placeholder="文明上网理性发言，请遵守新闻评论服务协议"></textarea>
+            </section>
+        </div>
+        <script>
+		//textare脚本
+		$("#text_one").bind("focus",function(){
+		   $(this).text('').addClass("blockcolor");
+		});
+		$('#text_one').bind('blur',function(){
+		   if($(this).text()==''){
+			$(this).text('文明上网理性发言，请遵守新闻评论服务协议').removeClass("blockcolor");
+		   }
+		})
+	   //评论弹出层
+		$(function(){
+			function xybox(){
+				var winx = $(window).width();
+				var winy = $(window).height();
+				$(".pl_fc").width(winx);
+				$(".pl_fc").height(winy);
+			}
+			xybox()
+			$(window).resize(function(){xybox()});
+			$('#plBtn,#mepl').on('click',function(){$(".pl_fc").show();$("#text_one").focus();})
+			$('#closeBtn_pl').on('click',function(){$(".pl_fc").hide();})
+			$('.openBtnfr.fr').on('click',function(){return VerifySubmit(123);})
+		})
+        </script>
+        <!------------------------评论弹出层开始------------------------>
+        
+        
+    <section class="backShare">
+        <input type="text" id="plBtn" value="说点什么呢">
+		<a href="http://m.jrj.com.cn/madapter/futures/2017/02/22140422090135.shtml#comment">评论</a>
+		<span class="fxBtn btn_share">分享</span>
+    </section>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/scroll.js.download"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/plV0.2.js.download"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/optionalunit.js.download"></script>
+    <script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js(2).do" type="text/javascript"></script>
+	<!--canvas个股js-->
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js(3).do"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js(4).do"></script>
+	<!--canvas指数js-->
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/js(5).do"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/stockchart.5.3.js.download"></script>
+    <!--分享代码-->
+	<script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/share.js.download"></script>  
+	<script>
+	 //分享组件
+		$("#share_but").bind("touchend",function(){
+			$(".shareFc").show();
+			var alinkshare = $(".shareFc .bdsharebuttonbox a").width();
+			$(".shareFc .bdsharebuttonbox a").css("padding-top",alinkshare)
+		})
+		$(".c_share").bind("touchend",function(){
+			$(".shareFc").hide()
+		})
+</script>
+	<!--尾部引用js-->
+	<!--统计代码-->
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/jrj_dcs_tag-m.js.download"></script> <!-- START OF SDC Advanced Tracking Code --> 
+ <script language="Javascript"><!-- 
+ var gService = true; 
+ var gTimeZone = +8; 
+ // Code section for Enable First-Party Cookie Tracking 
+ function dcsCookie(){ 
+ 	if (typeof(dcsOther)=="function"){ 
+ 		dcsOther(); 
+ 	} 
+ 	else if (typeof(dcsPlugin)=="function"){ 
+ 		dcsPlugin(); 
+ 	} 
+ 	else if (typeof(dcsFPC)=="function"){ 
+ 		dcsFPC(gTimeZone); 
+ 	} 
+ } 
+ function dcsGetCookie(name){ 
+ 	var pos=document.cookie.indexOf(name+"="); 
+ 	if (pos!=-1){ 
+ 		var start=pos+name.length+1; 
+ 		var end=document.cookie.indexOf(";",start); 
+ 		if (end==-1){ 
+ 			end=document.cookie.length; 
+ 		} 
+ 		return unescape(document.cookie.substring(start,end)); 
+ 	} 
+ 	return null; 
+ } 
+ function dcsGetCrumb(name,crumb){ 
+ 	var aCookie=dcsGetCookie(name).split(":"); 
+ 	for (var i=0;i<aCookie.length;i++){ 
+ 		var aCrumb=aCookie[i].split("="); 
+ 		if (crumb==aCrumb[0]){ 
+ 			return aCrumb[1]; 
+ 		} 
+ 	} 
+ 	return null; 
+ } 
+ function dcsFPC(offset){ 
+ 	if (typeof(offset)=="undefined"){ 
+ 		return; 
+ 	} 
+ 	var name=gFpc; 
+ 	var dCur=new Date(); 
+ 	dCur.setTime(dCur.getTime()+(dCur.getTimezoneOffset()*60000)+(offset*3600000)); 
+ 	var dExp=new Date(dCur.getTime()+315360000000); 
+ 	var dSes=new Date(dCur.getTime()); 
+ 	if (document.cookie.indexOf(name+"=")!=-1){ 
+ 		var id=dcsGetCrumb(name,"id"); 
+ 		var lv=parseInt(dcsGetCrumb(name,"lv")); 
+ 		var ss=parseInt(dcsGetCrumb(name,"ss")); 
+ 		if ((id==null)||(id=="null")||isNaN(lv)||isNaN(ss)){ 
+ 			return; 
+ 		} 
+ 		WT.co_f=id; 
+ 		WT.vt_f="0"; 
+ 		WT.vt_f_a="0"; 
+ 		var dLst=new Date(lv); 
+ 		dSes.setTime(ss); 
+ 		if ((dCur.getTime()>(dLst.getTime()+1800000))||(dCur.getTime()>(dSes.getTime()+28800000))){ 
+ 			dSes.setTime(dCur.getTime()); 
+ 			WT.vt_f_s="1"; 
+ 		} 
+ 		if ((dCur.getDay()!=dLst.getDay())||(dCur.getMonth()!=dLst.getMonth())||(dCur.getYear()!=dLst.getYear())){ 
+ 			WT.vt_f_d="1"; 
+ 		} 
+ 	} 
+ 	else{ 
+ 		var tmpname=name+"_TMP="; 
+ 		document.cookie=tmpname+"1"; 
+ 		if (document.cookie.indexOf(tmpname)!=-1){ 
+ 			document.cookie=tmpname+"; expires=Thu, 01-Jan-1970 00:00:01 GMT"; 
+ 			if ((typeof(gWtId)!="undefined")&&(gWtId!="")){ 
+ 				WT.co_f=gWtId; 
+ 				WT.vt_f="0"; 
+ 			} 
+ 			else if ((typeof(gTempWtId)!="undefined")&&(gTempWtId!="")){ 
+ 				WT.co_f=gTempWtId; 
+ 				WT.vt_f="1"; 
+ 			} 
+ 			else{ 
+ 				WT.co_f="2"; 
+ 				var cur=dCur.getTime().toString(); 
+ 				for (var i=2;i<=(32-cur.length);i++){ 
+ 					WT.co_f+=Math.floor(Math.random()*16.0).toString(16); 
+ 				} 
+ 				WT.co_f+=cur; 
+ 				WT.vt_f="1"; 
+ 			} 
+ 			WT.vt_f_a=(typeof(gWtAccountRollup)!="undefined")?"0":"1"; 
+ 			WT.vt_f_s="1"; 
+ 			WT.vt_f_d="1"; 
+ 		} 
+ 		else{ 
+ 			WT.vt_f="2"; 
+ 			WT.vt_f_a="2"; 
+ 			return; 
+ 		} 
+ 	} 
+ 	WT.co_f=escape(WT.co_f); 
+ 	WT.vt_sid=WT.co_f+"."+dSes.getTime(); 
+ 	var expiry="; expires="+dExp.toGMTString(); 
+ 	document.cookie=name+"="+"id="+WT.co_f+":lv="+dCur.getTime().toString()+":ss="+dSes.getTime().toString()+expiry+"; path=/"+(((typeof(gFpcDom)!="undefined")&&(gFpcDom!=""))?("; domain="+gFpcDom):("")); 
+ } 
+ // Code section for Use the new first-party cookie generated with this tag. 
+ var gFpc="WT_FPC"; 
+ var gWtId=""; 
+ var gTempWtId=""; 
+ if (gService){ 
+ 	var gConvert=true; 
+ } 
+ function dcsMultiTrack(){ 
+ 	for (var i=0;i<arguments.length;i++){ 
+ 		if (arguments[i].indexOf('WT.')==0){ 
+ 				WT[arguments[i].substring(3)]=arguments[i+1]; 
+ 				i++; 
+ 		} 
+ 		if (arguments[i].indexOf('DCS.')==0){ 
+ 				DCS[arguments[i].substring(4)]=arguments[i+1]; 
+ 				i++; 
+ 		} 
+ 		if (arguments[i].indexOf('DCSext.')==0){ 
+ 				DCSext[arguments[i].substring(7)]=arguments[i+1]; 
+ 				i++; 
+ 		} 
+ 	} 
+ 	var dCurrent=new Date(); 
+ 	DCS.dcsdat=dCurrent.getTime(); 
+ 	dcsTag(); 
+ } 
+ function dcsAdv(){ 
+ 	dcsFunc("dcsCookie"); 
+ } 
+ //--> 
+ </script> 
+ <!-- END OF SDC Advanced Tracking Code --> 
+ <!-- START OF SmartSource Data Collector TAG --> 
+ <script language="JavaScript"><!-- 
+ var gImages=new Array; 
+ var gIndex=0; 
+ var DCS=new Object(); 
+ var WT=new Object(); 
+ var DCSext=new Object(); 
+ var gQP=new Array(); 
+ var gDomain="sdc.jrj.com.cn"; 
+ var gDcsId="dcs0kbnws6cwv3t3c80mwlr23_8j4c"; 
+ // Add customizations here 
+ if ((typeof(gConvert)!="undefined")&&gConvert&&(document.cookie.indexOf(gFpc+"=")==-1)){ 
+ 	//document.write("<SCR"+"IPT Language='JavaScript' SRC='"+"http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+"/"+gDcsId+"/wtid.js"+"'></SCR"+"IPT>"); 
+ } 
+ //--> 
+ </script> 
+ <script language="Javascript"><!-- 
+ function dcsVar(){ 
+ 	var dCurrent=new Date(); 
+ 	WT.tz=dCurrent.getTimezoneOffset()/60*-1; 
+ 	if (WT.tz==0){ 
+ 		WT.tz="0"; 
+ 	} 
+ 	WT.bh=dCurrent.getHours(); 
+ 	WT.ul=navigator.appName=="Netscape"?navigator.language:navigator.userLanguage; 
+ 	if (typeof(screen)=="object"){ 
+ 		WT.cd=navigator.appName=="Netscape"?screen.pixelDepth:screen.colorDepth; 
+ 		WT.sr=screen.width+"x"+screen.height; 
+ 	} 
+ 	if (typeof(navigator.javaEnabled())=="boolean"){ 
+ 		WT.jo=navigator.javaEnabled()?"Yes":"No"; 
+ 	} 
+ 	if (document.title){ 
+ 		WT.ti=document.title; 
+ 	} 
+ 	WT.fi="No"; 
+ 	if (navigator.plugins && navigator.plugins.length) {
+ 		for (var ii=0;ii<navigator.plugins.length;ii++) {
+ 		if (navigator.plugins[ii].name.indexOf('Shockwave Flash')!=-1) {
+ 			WT.fv=navigator.plugins[ii].description.split('Shockwave Flash ')[1];
+ 			WT.fi="Yes"; 
+ 			break;
+ 		}
+ 	}
+ 	} else if (window.ActiveXObject) {
+ 	var swf = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+ 	 	if(swf) {
+ 	 	 	try{WT.fv=swf.GetVariable('$version').split(' ')[1].replace(/,/ig,'.');WT.fi='Yes';}catch(e){}
+ 	 	}
+ 	}
+ 	if(WT.fi=='Yes'){
+ 	    WT.fv=WT.fv.substring(0,WT.fv.indexOf('.')+2); 
+ 	 }
+ 	DCS.dcsdat=dCurrent.getTime(); 
+ 	DCS.dcssip=window.location.hostname; 
+ 	DCS.dcsuri=window.location.pathname; 
+ 	if (window.location.search){ 
+ 		DCS.dcsqry=window.location.search; 
+ 		if (gQP.length>0){ 
+ 			for (var i=0;i<gQP.length;i++){ 
+ 				var pos=DCS.dcsqry.indexOf(gQP[i]); 
+ 				if (pos!=-1){ 
+ 					var front=DCS.dcsqry.substring(0,pos); 
+ 					var end=DCS.dcsqry.substring(pos+gQP[i].length,DCS.dcsqry.length); 
+ 					DCS.dcsqry=front+end; 
+ 				} 
+ 			} 
+ 		} 
+ 	} 
+ 	if ((window.document.referrer!="")&&(window.document.referrer!="-")){ 
+ 		if (!(navigator.appName=="Microsoft Internet Explorer"&&parseInt(navigator.appVersion)<4)){ 
+ 			DCS.dcsref=window.document.referrer; 
+ 		} 
+ 	} 
+ } 
+ function A(N,V){ 
+ 	return "&"+N+"="+dcsEscape(V); 
+ } 
+ function dcsEscape(S){ 
+ 	if (typeof(RE)!="undefined"){ 
+ 		var retStr = new String(S); 
+ 		for (R in RE){ 
+ 			retStr = retStr.replace(RE[R],R); 
+ 		} 
+ 		return retStr; 
+ 	} 
+ 	else{ 
+ 		return escape(S); 
+ 	} 
+ } 
+ function dcsLoadHref(evt){ 
+ 	if ((typeof(gHref)!="undefined")&&(gHref.length>0)){ 
+ 		window.location=gHref; 
+ 		gHref=""; 
+ 	} 
+ } 
+ function dcsCreateImage(dcsSrc){ 
+ 	if (document.images){ 
+ 		gImages[gIndex]=new Image; 
+ 		if ((typeof(gHref)!="undefined")&&(gHref.length>0)){ 
+ 			gImages[gIndex].onload=gImages[gIndex].onerror=dcsLoadHref; 
+ 		} 
+ 		gImages[gIndex].src=dcsSrc; 
+ 		gIndex++; 
+ 	} 
+ 	else{ 
+ 		document.write('<IMG BORDER="0" NAME="DCSIMG" WIDTH="1" HEIGHT="1" SRC="'+dcsSrc+'">'); 
+ 	} 
+ } 
+ function dcsMeta(){ 
+ 	var elems; 
+ 	if (document.all){ 
+ 		elems=document.all.tags("meta"); 
+ 	} 
+ 	else if (document.documentElement){ 
+ 		elems=document.getElementsByTagName("meta"); 
+ 	} 
+ 	if (typeof(elems)!="undefined"){ 
+ 		for (var i=1;i<=elems.length;i++){ 
+ 			var meta=elems.item(i-1); 
+ 			if (meta.name){ 
+ 				if (meta.name.indexOf('WT.')==0){ 
+ 					WT[meta.name.substring(3)]=meta.content; 
+ 				} 
+ 				else if (meta.name.indexOf('DCSext.')==0){ 
+ 					DCSext[meta.name.substring(7)]=meta.content; 
+ 				} 
+ 				else if (meta.name.indexOf('DCS.')==0){ 
+ 					DCS[meta.name.substring(4)]=meta.content; 
+ 				} 
+ 			} 
+ 		} 
+ 	} 
+ } 
+ function dcsTag(){ 
+ 	var P="http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+(gDcsId==""?'':'/'+gDcsId)+"/dcs.gif?"; 
+ 	for (N in DCS){ 
+ 		if (DCS[N]) { 
+ 			P+=A(N,DCS[N]); 
+ 		} 
+ 	} 
+ 	for (N in WT){ 
+ 		if (WT[N]) { 
+ 			P+=A("WT."+N,WT[N]); 
+ 		} 
+ 	} 
+ 	for (N in DCSext){ 
+ 		if (DCSext[N]) { 
+ 			P+=A(N,DCSext[N]); 
+ 		} 
+ 	} 
+ 	if (P.length>2048&&navigator.userAgent.indexOf('MSIE')>=0){ 
+ 		P=P.substring(0,2040)+"&WT.tu=1"; 
+ 	} 
+ 	dcsCreateImage(P); 
+ } 
+ function dcsFunc(func){ 
+ 	if (typeof(window[func])=="function"){ 
+ 		window[func](); 
+ 	} 
+ } 
+ dcsVar(); 
+ //dcsMeta(); 
+ dcsFunc("dcsAdv"); 
+ dcsTag(); 
+ //--> 
+ </script> <script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/a1.js.download"></script>
+<noscript><img src="http://c.wrating.com/a.gif?a=&c=860010-2948010100" width="1" height="1"/></noscript>
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/11.0.1.js.download" id="sozz"></script><script charset="utf-8" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/ab77b6ea7f3fbf79.js.download"></script>
+
+  <!--微信分享-->
+  <script>
+        var  shareData={
+		    imgUrl:"http://i0.jrjimg.cn/ad/pic300.jpg" //显示的logo图片地址
+            };
+    </script>
+	<script type="text/javascript" src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/jweixin-1.0.0.js.download"></script>
+	<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/weixinShareUtil-1.0.1-min.js.download"></script>
+	<script>
+		initWeixin();
+    </script>
+	
+<script src="./重磅干货：万字长文解析全球商品期货量化交易策略-手机金融界_files/m_hangq.js.download"></script>
+
+
+
+<!-- create html time:2017-02-27 17:08:03 --></body></html>

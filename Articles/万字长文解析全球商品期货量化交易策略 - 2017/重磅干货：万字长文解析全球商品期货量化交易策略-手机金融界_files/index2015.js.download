@@ -1,0 +1,322 @@
+var JrjHome = JrjHome || {};
+JrjHome.Sso = JrjHome.Sso || {};
+JrjHome.Zxg = JrjHome.Zxg || {};
+var JRJ = JRJ || {};
+(function (window) {
+    String.prototype.ellipsis = function (length, suffix) {
+        if (this.length > length) {
+            return this.substring(0, length) + (suffix != null ? suffix : "...");
+        } else {
+            return this;
+        }
+    };
+	String.prototype.tolength = (function(begin, num) {
+	 var ascRegexp = /[^\x00-\xFF]/g, i = 0;
+	 while(i < begin) (i ++ && this.charAt(i).match(ascRegexp) && begin --);
+	 i = begin;
+	 var end = begin + num;
+	 while(i < end) (i ++ && this.charAt(i).match(ascRegexp) && end --);
+	 return this.substring(begin, end);
+	});
+
+	String.prototype.strLen = function() {
+		var len = 0;
+		for (var i = 0; i < this.length; i++) {
+		  if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2; else len ++;
+		}
+		return len;
+	}
+	//将字符串拆成字符，并存到数组中
+	String.prototype.strToChars = function(){
+		var chars = new Array();
+		for (var i = 0; i < this.length; i++){
+			chars[i] = [this.substr(i, 1), this.isCHS(i)];
+		}
+		String.prototype.charsArray = chars;
+		return chars;
+	}
+	//判断某个字符是否是汉字
+	String.prototype.isCHS = function(i){
+		if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) 
+			return true;
+		else
+			return false;
+	}
+	//截取字符串（从start字节到end字节）
+	String.prototype.subCHString = function(start, end){
+		var len = 0;
+		var str = "";
+		this.strToChars();
+		for (var i = 0; i < this.length; i++) {
+			if(this.charsArray[i][1])
+				len += 2;
+			else
+				len++;
+			if (end < len)
+				return str;
+			else if (start < len)
+				str += this.charsArray[i][0];
+		}
+		return str;
+	}
+	//截取字符串（从start字节截取length个字节）
+	String.prototype.subCHStr = function(start, length){
+		return this.subCHString(start, start + length);
+	}
+})(window);
+JRJ.bom = {
+	getCookie: function(a) {
+		return (a = document.cookie.match("(?:^|;)\\s*" + a + "\x3d([^;]*)")) ? unescape(a[1]) : ""
+	},
+	setCookie: function(a, f, b, k, l, m) {
+		document.cookie = a + "\x3d" + escape(f) + (b ? "; expires\x3d" + b.toGMTString() : "") + (k ? "; path\x3d" + k : "") + (l ? "; domain\x3d" + l : "") + (m ? "; secure" : "")
+	},
+	delCookie: function(a, f, b) {
+		this.getCookie(a) && (document.cookie = a + "\x3d" + (f ? "; path\x3d" + f : "") + (b ? "; domain\x3d" + b : "") + "; expires\x3dThu, 01-Jan-70 00:00:01 GMT")
+	}
+};
+var sso_userID= JRJ.bom.getCookie("myjrj_userid");
+$(document).ready(function(){
+	try {
+		JrjHome.Sso.init();
+	} catch (b) {}
+	//try {
+		//JrjHome.Zxg.loop();
+	//} catch (c) {}
+});	
+var sso_domain = "jrj.com";
+if (location.href.indexOf("jrj.com.cn") > -1) sso_domain = "jrj.com.cn";
+var sso_login_url = "http://sso.jrj.com.cn/sso/json/userSession.jsp",
+	sso_isLogin_url = "http://sso.jrj.com.cn/sso/json/userInfo.jsp",
+	sso_user_img="http://i.jrj.com.cn/pass/headPics.jspa";
+JrjHome.Sso.init = function() {
+	if (JrjHome.Sso.isLogin()) {
+		JrjHome.Sso.readsso();
+		jQuery("#login_before").css('display','none'); 
+		jQuery("#login_after").css('display','block');
+	} else {
+		JrjHome.Sso.link();
+		jQuery("#login_before").css('display','block'); 
+		jQuery("#login_after").css('display','none'); 
+	}
+};
+JrjHome.Sso.isLogin = function() {
+	return JRJ.bom.getCookie("JRJ.SSOUser") != "" && JRJ.bom.getCookie("JRJ.SSOUser_LID") != "" ? true : false
+};
+JrjHome.Sso.readsso = function() {
+	jQuery.getScript(sso_isLogin_url, function() {
+		if(userName.strLen()>6)
+			userName = userName.subCHString(0,6)+"*";
+		jQuery("#userInfo").find("span").html(userName);
+		JrjHome.Sso.readImg(sso_userID);
+		JrjHome.Zxg.loadData(sso_userID);
+	})
+};
+JrjHome.Sso.readImg = function(a) {
+	jQuery.ajax({
+		type: "get",
+		dataType: "jsonp",
+		scriptCharset: "GBK",
+		url: "http://i.jrj.com.cn/pass/headPics.jspa",
+		data: "passportIds=" + a,
+		success: function(content) {
+			jQuery("#userInfo").find("img").attr("src",content[0].headPicMS);
+		}
+	})
+};
+var zxg_timer, Zxg = {
+	num: 5,
+	delaytime: 30000,
+	zxgurl: "http://i.jrj.com.cn/app/stock/W4xkI2qHm13TMaO28x1VN6l3ye6571N/stockq.jspa?userId=",
+	hqurl: "http://q.jrjimg.cn/?q=cn|s&i=",
+	addurl: "http://i.jrj.com.cn/app/stock/json/add.jspa?vname=stock_add&code=",
+	hoturl: "http://data.share.jrj.com.cn/stocks/pubdata/hotHqData.js?app=m2015"
+};
+/**
+JrjHome.Zxg.loop = function() {
+	JrjHome.Zxg.update();
+	zxg_timer = window.setTimeout("JrjHome.Zxg.loop()", 30000)
+};
+JrjHome.Zxg.update = function() {
+	if (JrjHome.Sso.isLogin()) try {
+		JrjHome.Zxg.loadData()
+	} catch (a) {}
+}*/
+var JrjHome_Zxg_flag = false,JrjHome_Zxg_list = "";
+JrjHome.Zxg.loadData = function(a) {
+	if (!JrjHome_Zxg_flag || JrjHome_Zxg_list == "") 
+	{
+		try {
+			jQuery.getScript(Zxg.zxgurl + a, function() {
+				if (typeof jrjZxg != "undefined") {	
+					console.log("jrjZxg++++++++++++++" + jrjZxg + "+++++++++++++++");
+					if(jrjZxg=='')
+					{
+						JrjHome.Zxg.loadHotData();
+					}else{			
+						JrjHome_Zxg_list = jrjZxg.split("|").join(",");
+						JrjHome_Zxg_flag = true;
+						JrjHome.Zxg.loadZxgData();
+						//用于其它需要加载自选股的地方
+						JrjHome.Zxg.load();
+					}
+				} 
+				else JrjHome.Zxg.loadHotData();
+			})
+		} catch (a) {
+			JrjHome_Zxg_list = "";
+			JrjHome_Zxg_flag = false;
+			JrjHome.Zxg.loadHotData();
+		} 
+	}
+	else 
+	{
+		JrjHome.Zxg.loadZxgData();
+	}	
+};
+JrjHome.Zxg.load = function(){};
+JrjHome.Zxg.loadZxgData = function() {
+	var a = new Date;
+	a = "_=" + a.getTime();
+	$.ajax({
+		type: "get",
+		dataType: "script",
+		scriptCharset: "gb2312",
+		url: Zxg.hqurl + JrjHome_Zxg_list + "&n=hq_mystock&c=code,name,np,pl,hlp&" + a,
+		data: "",
+		success: function() {
+			if (typeof hq_mystock != "undefined") {
+				var b = [],w = [],
+					c = "",t="";
+				b.push("<ul>");
+				if (hq_mystock.HqData != null && hq_mystock.HqData.length > 0) {
+					var _codeU;
+					var quote_np;
+					for (var d = hq_mystock.HqData.length > Zxg.num ? Zxg.num : hq_mystock.HqData.length, f = 0; f < d; f++) {
+						_codeU = hq_mystock.HqData[f][hq_mystock.Column.code];
+						 //200或者900开头的为B股
+				        if (_codeU.indexOf("200") == 0 || _codeU.indexOf("900") == 0) {
+				        	quote_np = hq_mystock.HqData[f][hq_mystock.Column.np].toFixed(3);
+				        }else
+			        	{
+				        	quote_np = hq_mystock.HqData[f][hq_mystock.Column.np].toFixed(2);
+			        	}
+						c = hq_mystock.HqData[f][hq_mystock.Column.pl] > 0 ? "red" : hq_mystock.HqData[f][hq_mystock.Column.pl] < 0 ? "gre" : "";
+						t = hq_mystock.HqData[f][hq_mystock.Column.pl] > 0 ? "+" : hq_mystock.HqData[f][hq_mystock.Column.pl] < 0 ? "" : "";
+						w.push('<li name="'+hq_mystock.HqData[f][hq_mystock.Column.code]+'"><b><a href="http://m.jrj.com.cn/v2/share,' + hq_mystock.HqData[f][hq_mystock.Column.code] + '.jspa">' + hq_mystock.HqData[f][hq_mystock.Column.name] + "</a></b>");
+						w.push('<i name="zxghq" class="' + c + '">' + quote_np + "&nbsp;");
+						w.push(t + hq_mystock.HqData[f][hq_mystock.Column.pl].toFixed(2) + "%</i></li>");
+					}
+					if(hq_mystock.HqData.length == 2)
+					{
+						b.push(w.join("") + w.join(""));
+					}else
+					{
+						b.push(w.join(""));
+					}
+					b.push("</ul>");
+					//alert(b.join(""));
+					$("#zxginfo").html(b.join(""));
+					if(hq_mystock.HqData.length>1)
+						JrjHome.Zxg.gunDong();
+				}
+			}
+		}
+	})
+};
+
+JrjHome.Zxg.loadHotData = function() {
+	console.log("loadHotData+++++++++++++"); 
+	var a = new Date,
+		b = "_=" + a.getTime();
+	$.getScript(Zxg.hoturl + "&" + b, function() {
+		for (var c = null, d = 0; d < webHotHqData.WebHotStcokHq.length; d++) 
+		c += webHotHqData.WebHotStcokHq[d].code + ",";
+		c != "" && $.ajax({
+			type: "get",
+			dataType: "script",
+			scriptCharset: "gb2312",
+			url: Zxg.hqurl + c + "&n=hq_mystock&c=code,name,np,pl,hlp&" + b,
+			data: "",
+			success: function() {
+				if (typeof hq_mystock != "undefined") {
+					var f = [],w = [],
+						e = "",t="";
+					f.push("<ul>");
+					if (hq_mystock.HqData != null && hq_mystock.HqData.length > 0) {
+						for (var h = hq_mystock.HqData.length > Zxg.num ? Zxg.num : hq_mystock.HqData.length, g = 0; g < h; g++) {
+							e = hq_mystock.HqData[g][hq_mystock.Column.pl] > 0 ? "red" : hq_mystock.HqData[g][hq_mystock.Column.pl] < 0 ? "gre" : "";
+							t = hq_mystock.HqData[g][hq_mystock.Column.pl] > 0 ? "+" : hq_mystock.HqData[g][hq_mystock.Column.pl] < 0 ? "" : "";
+							w.push('<li name="'+hq_mystock.HqData[g][hq_mystock.Column.code]+'"><b><a href="http://m.jrj.com.cn/v2/share,' + hq_mystock.HqData[g][hq_mystock.Column.code] + '.jspa">' + hq_mystock.HqData[g][hq_mystock.Column.name] + "</a></b>");
+							w.push('<i name="zxghq'+hq_mystock.HqData[g][hq_mystock.Column.code]+'" class="' + e + '">' + hq_mystock.HqData[g][hq_mystock.Column.np].toFixed(2) + "&nbsp;");
+							w.push(t + hq_mystock.HqData[g][hq_mystock.Column.pl].toFixed(2) + "%</i></li>");
+
+						}
+						if(hq_mystock.HqData.length == 2)
+						{
+							f.push(w.join("") + w.join(""));
+						}else
+						{
+							f.push(w.join(""));
+						}
+						f.push("</ul>");
+					   //alert(f.join(""));
+						$("#zxginfo").html(f.join(""));
+						if(hq_mystock.HqData.length>1)
+							JrjHome.Zxg.gunDong();
+					}
+				}
+			}
+		});
+	})
+};
+JrjHome.Sso.link = function() {
+	var index_reg_url="http://m.jrj.com.cn/sso/mobileToRegister?from=mSite&ReturnUrl=";
+	var index_login_url="http://m.jrj.com.cn/sso/mobileToLogin?from=mSite&ReturnUrl=";
+	var location_url = window.location.href;
+	
+	if(location_url == "undefined" || location_url == "")
+		location_url="http://m.jrj.com.cn/";
+	$("#regUrl").attr("href",index_reg_url+location_url);
+	$("#loginUrl").attr("href",index_login_url+location_url);
+};
+//滚动效果
+JrjHome.Zxg.gunDong=function()
+{
+		$(".JQ_contact_box").jCarouselLite({
+			pauseOnHover:true,
+			vertical:true,
+			auto:5000,
+			start:1,
+			beforeStart: function(a) {
+				var code = $(a[1]).attr('name');
+				var a = new Date;
+				a = "_=" + a.getTime();
+				$.ajax({
+					type: "get",
+					dataType: "script",
+					scriptCharset: "gb2312",
+					url: Zxg.hqurl + code + "&n=hq_mystock&c=code,name,np,pl,hlp&" + a,
+					data: "",
+					success: function() {
+						if (typeof hq_mystock != "undefined") {
+							var b = [],
+								c = "",t="";
+							if (hq_mystock.HqData != null && hq_mystock.HqData.length > 0) {
+								for (var d = hq_mystock.HqData.length > Zxg.num ? Zxg.num : hq_mystock.HqData.length, f = 0; f < d; f++) {
+									c = hq_mystock.HqData[f][hq_mystock.Column.pl] > 0 ? "red" : hq_mystock.HqData[f][hq_mystock.Column.pl] < 0 ? "gre" : "";
+									t = hq_mystock.HqData[f][hq_mystock.Column.pl] > 0 ? "+" : hq_mystock.HqData[f][hq_mystock.Column.pl] < 0 ? "" : "";
+									b.push(hq_mystock.HqData[f][hq_mystock.Column.np].toFixed(2) + "&nbsp;");
+									b.push(t + hq_mystock.HqData[f][hq_mystock.Column.pl].toFixed(2) + "%");
+								}
+								$("#zxghq"+code).attr("class",c);
+								$("i[name='zxghq"+code+"']").each(function(){
+									$(this).html(b.join(""));
+								});
+							}
+						}
+					}
+				})
+			}
+		});
+}

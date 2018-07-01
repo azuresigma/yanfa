@@ -1,0 +1,78 @@
+if (typeof JRJ == "undefined" || !JRJ) {
+			var JRJ = {};
+		}
+		if (typeof JRJ.html54stock == "undefined" || !JRJ.html54stock) {
+			JRJ.html54stock = {};
+		}
+		//开发同学修改这个股票代码为当前页面的股票代码,后需删除该注释!
+		var canvasChart=$(".canvasChart")[0];
+		var mainStockCode;
+		if(canvasChart){
+			mainStockCode=$(canvasChart).attr('value');
+		}
+		/*
+		 * 行情图的基本配置
+		 */
+		JRJ.html54stock.gCvsCfg = {
+			//是否需要展示十字线
+			//addCrossLinesAndTipEvents: true,
+			//是否需要volumn展示区
+			bNeedVolumn : true,
+			code: mainStockCode
+		};
+		JRJ.html54stock.gK_CvsCfg = {
+			code: mainStockCode
+		};
+		Zepto(document).ready(function($) {
+			/*
+			 * 默认第一个展示的行情图的初始化
+			 */
+			 // 个股分时
+			 if($("#canvas4Ashare")[0]){
+			 	if(!JRJ.html54stock.gHasAShare){
+					JRJ.html54stock.initAShareCvs();
+				}
+			 }
+			 // 个股 日K
+			 if($("#canvas4KShareDay")[0]){ 
+				if(!JRJ.html54stock.gHasKShareDay){
+			    	JRJ.html54stock.initKShareDayCvs();
+				}
+			 }
+			 //个股 周K
+			 if($("#canvas4KShareWeek")[0]){ 
+				if(!JRJ.html54stock.gHasKShareWeek){
+			    	JRJ.html54stock.initKShareWeekCvs();
+				}
+			 }
+			 //个股 月K
+			 if($("#canvas4KShareMonth")[0]){ 
+				if(!JRJ.html54stock.gHasKShareMonth){
+			    	JRJ.html54stock.initKShareMonthCvs();
+				}
+		     }
+		     //指数 分时
+		     if($("#canvas4Aindex")[0]){
+		     	if (!JRJ.html54stock.gHasAIndex) {
+					JRJ.html54stock.initAIndexCvs();
+				}	
+		     }
+		     //指数 日K
+			 if($("#canvas4KIndexDay")[0]){
+		 		if(!JRJ.html54stock.gHasIndexDay){
+	    			JRJ.html54stock.initKIndexDayCvs();
+				}
+		 	 }
+		     //指数 周K
+			 if($("#canvas4KIndexWeek")[0]){
+		 		if(!JRJ.html54stock.gHasKIndexWeek){
+	    			JRJ.html54stock.initKIndexWeekCvs();
+				}
+		 	 }
+		     //指数 月K
+			 if($("#canvas4KIndexMonth")[0]){
+		 		if(!JRJ.html54stock.gHasKIndexMonth){
+	    			JRJ.html54stock.initKIndexMonthCvs();
+				}
+		 	 }
+		});

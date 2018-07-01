@@ -1,0 +1,360 @@
+﻿var hn_showdata={};
+var JRJGN = JRJGN || {};
+var JrjHomeGN = JrjHomeGN || {};
+JrjHome.SsoGN = JrjHome.SsoGN || {};
+JrjHome.ZxgGN = JrjHome.ZxgGN || {};
+
+var zxgGN = [];
+var JrjHome_Zxg_flagGN = false,
+	JrjHome_Zxg_listGN = "";
+
+var ZxgnewGN = {
+	num: 5,
+	delaytime: 3000,
+	zxgurl: "http://i.jrj.com.cn/app/stock/W4xkI2qHm13TMaO28x1VN6l3ye6571N/stockq.jspa?userId="
+};
+
+
+JRJ.bomGN = {
+	getCookie: function(a) {
+		return (a = document.cookie.match("(?:^|;)\\s*" + a + "\x3d([^;]*)")) ? unescape(a[1]) : ""
+	},
+	setCookie: function(a, f, b, k, l, m) {
+		document.cookie = a + "\x3d" + escape(f) + (b ? "; expires\x3d" + b.toGMTString() : "") + (k ? "; path\x3d" + k : "") + (l ? "; domain\x3d" + l : "") + (m ? "; secure" : "")
+	},
+	delCookie: function(a, f, b) {
+		this.getCookie(a) && (document.cookie = a + "\x3d" + (f ? "; path\x3d" + f : "") + (b ? "; domain\x3d" + b : "") + "; expires\x3dThu, 01-Jan-70 00:00:01 GMT")
+	}
+};
+
+$(document).ready(function(){
+  if (JrjHome.Sso.isLoginGN()) {
+			JrjHome.Zxg.loadDataGN(JRJ.bom.getCookie("myjrj_userid"));
+		}
+	hn_showdata.getJsGN();
+	//setInterval("hn_showdata.getJs()", 5 * 1000);
+});
+
+hn_showdata.getJsGN = function() {
+       var str="";
+       var hqs=$(".nn_table");
+       //alert(hqs);
+       var ids=[];
+       $.each(hqs,function(i,n){
+       	   	ids[i]=$(n).attr("gncode");	       	  
+	   });
+   //alert(ids);
+ //var ids=['qs'];
+   
+  if(ids.length>0){
+   for(var l=0;l<ids.length;l++){
+    var surl="http://stock.jrj.com.cn/action/concept/queryConceptPriceAndStockcode.jspa?vname=concept&conceptcode="+ids[l]; 
+     //alert(surl);
+     	$.ajax({
+		type: "get",
+		dataType: "script",
+        async:false,  
+		url: surl,
+		success: function() {
+			//alert(concept.data.length);
+			if(concept.data.length>0){
+			for(var i=0;i<concept.data.length;i++){
+			var pp=concept.data[i][concept.column.conceptcode];
+			var stcode=concept.data[i][concept.column.stockcodes].split(",");
+			var name =concept.data[i][concept.column.coceptname];
+			
+			var str="";
+			//var n=[];
+			//var gpcode=[];
+			//alert(stcode.length);			
+		   // if(stcode.length>10){
+		   // for(var m=0;m<10;m++){
+		   // gpcode[m]=stcode[m];
+          //	 }		    
+	//  }
+	//	    else if(stcode.length<10 && stcode.length>5){
+	//	    for(var n=0;n<5;n++){
+	//	    gpcode[n]=stcode[n];
+	//    }
+	//	    }else{
+	//	    gpcode=stcode;
+	//    }
+			//alert(gpcode);
+			if(concept.data[i][concept.column.pl]<0){clor='<i class="gre">'}else{clor='<i class="red">'}
+			str='<p class="top"><b>'+name+'概念股</b><span>概念涨幅'
+			+clor
+			+concept.data[i][concept.column.pl]+'%</i></span></p><table cellpadding="0" cellspacing="0" border="0" width="100%">'
+				+'<tr><th>证券代码</th><th>证券名称</th><th>最新价</th><th>涨跌幅</th><th>加入自选股</th></tr>';
+		   
+		    if(stcode.length>0){
+			var gurl="http://q.jrjimg.cn/?q=cn|s&c=code,name,np,pl,lcp,op,stp&o=pl,d&i=" + stcode+"&n=obj"+pp
+				
+		    $.ajax({
+		      type: "get",
+	     	  dataType: "script",
+              async:false,  
+		      url: gurl,
+		      success: function() {
+		      	var length = eval("obj"+pp).HqData.length;
+			    var code_n = eval("obj"+pp).Column.code;
+			    var name_n = eval("obj"+pp).Column.name;
+			    var np_n = eval("obj"+pp).Column.np;
+			    var pl_n = eval("obj"+pp).Column.pl;
+			    var lcp_n = eval("obj"+pp).Column.lcp;
+			    var op_n = eval("obj"+pp).Column.op;
+			    var stp_n = eval("obj"+pp).Column.stp;
+		      	var mstr=[];		        
+		        eval("obj"+pp).HqData.sort(function(a,b){			      
+			     	return a[pl_n]>b[pl_n]?-1:1;
+		          
+		      	});
+		      	var result = []; 
+		        for(var k=0;k<length;k++){
+		      
+		        //alert(datae[stp_n]);
+		         if(eval("obj"+pp).HqData[k][stp_n] != 1){
+		         //alert(1);
+		         result.push(eval("obj"+pp).HqData[k]);  
+		        }
+		        }
+		        
+		        if(result.length>10){
+		         length=10;
+		        }else if(result.length>5 && result.length<10){
+		         length=5;
+		        }else{
+		         length=result.length;
+		        }
+		                        		      
+			    if (length > 0) {
+			    	var ss='';
+			    	for (var i = 0; i < length; i++) {
+			    	var num=i+1;
+					//var data = eval("obj"+pp).HqData[i];
+					var data=result[i];
+					 ss +='<tr><td><a  class="newstdcode"  href="http://m.jrj.com.cn/v2/share,'+data[code_n]+'.jspa">'+data[code_n]+'</a></td><td><a href="http://m.jrj.com.cn/v2/share,'+data[code_n]+'.jspa">'+data[name_n]+'</a></td>';
+				   
+					   
+				
+				    //if ((data[lcp_n] != 0 && data[np_n] == 0) || (data[stp_n] == 1)) {
+					//	ss += '<td>' + data[lcp_n].toFixed(2) + '</td><td class="tr gre">停牌</td>';
+				//	}
+					if ((data[op_n] == 0) ||(data[lcp_n] != 0 && data[np_n] == 0) || (data[stp_n] == 1)) {
+						if (data[lcp_n] == 0) {
+							//新股
+							ss += '<td  class=" tr" id="ggnp'+data[code_n]+'"  name="ggnp'+data[code_n]+'" >--</td><td  id="ggpl'+data[code_n]+'"  name="ggpl'+data[code_n]+'">--</td>';
+
+						} else {
+							//停牌
+							ss += '<td  class=" tr"  id="ggnp'+data[code_n]+'"  name="ggnp'+data[code_n]+'">' + data[lcp_n].toFixed(2) + '</td><td  id="ggpl'+data[code_n]+'"  name="ggpl'+data[code_n]+'">停牌</td>';
+						}
+
+					}else if (data[pl_n].toFixed(2) >= 0) {
+						ss += '<td class="red tr" id="ggnp'+data[code_n]+'"  name="ggnp'+data[code_n]+'">' + data[np_n].toFixed(2) + '</td><td class="red tr"  id="ggpl'+data[code_n]+'"  name="ggpl'+data[code_n]+'">' + data[pl_n].toFixed(2) + '%</td>';
+
+					} else {
+						ss += '<td class="tr gre"  id="ggnp'+data[code_n]+'"  name="ggnp'+data[code_n]+'">' + data[np_n].toFixed(2) + '</td><td class="tr gre"  id="ggpl'+data[code_n]+'"  name="ggpl'+data[code_n]+'">' + data[pl_n].toFixed(2) + '%</td>';
+					}
+								    
+				   if(zxgGN.length != 0 && zxgGN.contains(data[code_n])){
+				  console.log("zxg++++++++++++++" + zxgGN + "+++++++++++++++");
+				   //alert(zxg);
+				   ss +='<td><a href="javascript:void(0)"  id="'+i+'"  target="_self" class="yadd cqhkGN" attr="'+ data[code_n] +'">+已添加</a></td></tr>';
+				   }else{				  				   
+				   ss +='<td><a href="javascript:void(0)"  id="'+i+'"  target="_self" class="addstock cqhkGN" attr="'+data[code_n]+'">+加入自选</a></td></tr>';				   
+				   
+				   }
+				   				
+				 }
+				   				 // alert(ss); 
+			    var nstr =' </table>';
+			   			var na=[];
+			   			
+               na.push(str+ss+nstr);
+		      $("#001" + pp).html("");//清除页面
+			  $("#001" + pp).append(na.join(""));
+            }
+              },
+		     // scriptCharset: "GBK"
+	        });	
+	       } 	
+	       
+	       }
+	      }    
+		 },
+		//scriptCharset: "GBK"
+	});
+   
+}
+}
+}
+//为自选股添加事件
+$(document).on('click', '.cqhkGN', function() {
+	//alert("123");
+	var co = $(this).attr("attr");
+	var msnode = $(this);
+	var row = parseInt(msnode.attr("id"));
+	//  var codeId=parseInt(msnode.attr("attr"));
+	if (!JrjHome.Sso.isLogin()) {
+		// alert("没有登录进行登录");
+		window.location.href = "http://m.jrj.com.cn/sso/mobileToLogin?ReturnURL=" + encodeURIComponent(window.location.href + "?f=sd&ac=" + co + "&row=" + row);
+	} else {
+		//alert ("add !!!!");
+		$.ajax({
+			type: "GET",
+			dataType: 'script',
+			url: "http://i.jrj.com.cn/app/stock/json/add.jspa?vname=stock_add&code=" + co,
+			success: function() {
+				if (typeof(stock_add) != "undefined") {
+					if (stock_add == "ok" || stock_add == "have") {
+						msnode.addClass('yadd').removeClass('addstock').text('+已添加');
+						zxgGN[zxgGN.length] = co;
+					}
+				}
+			},
+			error: function() {
+				alert("添加失败，请稍后重试！");
+			}
+		});
+	}
+
+});
+
+
+
+//自定义contains方法
+Array.prototype.contains = function(element) {
+	for (var i = 0; i < this.length; i++) {
+		if (this[i] == element) {
+			return true;
+		}
+	}
+}
+
+//判断登录
+JrjHome.Sso.isLoginGN = function() {
+	return JRJ.bomGN.getCookie("JRJ.SSOUser") != "" && JRJ.bomGN.getCookie("JRJ.SSOUser_LID") != "" ? true : false
+};
+
+
+JrjHome.Zxg.loadDataGN = function(a) {
+	if (!JrjHome_Zxg_flagGN || JrjHome_Zxg_listGN == "") {
+		try {
+		
+			jQuery.getScript(ZxgnewGN.zxgurl + a, function() {
+				if (typeof jrjZxg != "undefined") {
+					//console.log("jrjZxg++++++++++++++" + jrjZxg + "+++++++++++++++");
+					if (jrjZxg != '') {
+						JrjHome_Zxg_listGN = jrjZxg.split("|").join(",");
+						JrjHome_Zxg_flagGN = true;
+                         //alert(JrjHome_Zxg_list);
+                       addzxgGN(JrjHome_Zxg_listGN);
+					}
+				}
+			})
+		} catch (a) {
+			JrjHome_Zxg_listGN = "";
+			JrjHome_Zxg_flagGN = false;
+		}
+	}
+};
+//取得用户自选股信息
+//解析返回的数据
+function addzxgGN(JrjHome_Zxg_listGN) {
+		if ($.trim(JrjHome_Zxg_listGN).length != 0) {
+			for (var i = 0; i < JrjHome_Zxg_listGN.split(",").length; i++) {
+				zxgGN.push(JrjHome_Zxg_listGN.split(",")[i]);
+			}
+		}
+	}
+
+
+
+//重新加载股票行情
+function getHQGN() {
+	
+	var tmp=0;
+	var j=0;
+	var ids="";
+	
+	var hqs=$(".newstdcode");
+	
+  var ida=[];
+  $.each(hqs,function(i,n){
+       	   	ida[i]=$(n).html();	       	  
+	});
+	
+	if(ida.length>0){
+	for(var i=0;i<ida.length;i++){
+		tmp++;
+		ids+=ida[i]+",";
+		if(tmp>40){
+			//alert(ids);
+			getstockGN(ids,j);
+			j++;
+			tmp=0;
+			ids="";
+		}	 
+	}
+	//alert(ids);
+	getstockGN(ids);
+}
+	
+}
+
+//批量刷新行情数据
+function getstockGN(ids, j) {
+	//alert(ids)
+	var url = "http://q.jrjimg.cn/?q=cn|s|sa&i=" + ids + "&c=code,name,np,pl,lcp,op,stp&n=hqa" + j + "&o=pl,d&p=1020&_dc=1423546805358";
+	//取得股票数据
+	$.getScript(url,
+		function() {
+			var id;
+			var sign;
+			var price, change;
+			var hqa = eval("hqa" + j);
+			var hqData = hqa.HqData;
+			for (idx in hqData) {
+				//alert(hqData[idx][hqa.Column['code']]);
+				if (typeof(hqData[idx][hqa.Column['code']]) != "undefined"){
+					np_name = "ggnp" + hqData[idx][hqa.Column['code']];
+					pl_name = "ggpl" + hqData[idx][hqa.Column['code']];
+					
+					//停牌
+					if (((hqData[idx][hqa.Column['lcp']] != 0) && (hqData[idx][hqa.Column['np']] == 0)) || (hqData[idx][hqa.Column['stp']] == 1)) {
+						price = hqData[idx][hqa.Column['lcp']].toFixed(2);
+						change = '停牌';
+						sign = "";
+					}else{
+						if (hqData[idx][hqa.Column['op']] == 0 && hqData[idx][hqa.Column['lcp']] == 0) {
+							$("td[name="+np_name+"]").css("color", "black");
+							$("td[name="+pl_name+"]").css("color", "black");
+							sign = "";
+							price = '--';
+							change = '--'	
+		
+						} else if (hqData[idx][hqa.Column['pl']] >= 0) {
+							//涨
+							$("td[name="+np_name+"]").css("color", "red");
+							$("td[name="+pl_name+"]").css("color", "red");
+							sign = "+";
+							price = hqData[idx][hqa.Column['np']].toFixed(2);
+							change = hqData[idx][hqa.Column['pl']].toFixed(2) + "%";
+						} else {
+							//跌
+							$("td[name="+np_name+"]").css("color", "green");
+							$("td[name="+pl_name+"]").css("color", "green");
+							sign = "";
+							price = hqData[idx][hqa.Column['np']].toFixed(2);
+							change = hqData[idx][hqa.Column['pl']].toFixed(2) + "%";
+						}
+					}
+					$("td[name="+np_name+"]").html(price);
+					$("td[name="+pl_name+"]").html(sign+change);
+				}
+				
+				
+				
+			}
+		});
+}

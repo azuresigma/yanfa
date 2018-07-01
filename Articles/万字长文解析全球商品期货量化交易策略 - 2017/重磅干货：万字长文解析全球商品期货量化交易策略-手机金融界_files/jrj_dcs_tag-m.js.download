@@ -1,0 +1,236 @@
+var jrj_SDC_code=' <!-- START OF SDC Advanced Tracking Code --> \n <SCRIPT LANGUAGE="Javascript"><!-- \n var gService = true; \n var gTimeZone = +8; \n // Code section for Enable First-Party Cookie Tracking \n function dcsCookie(){ \n 	if (typeof(dcsOther)=="function"){ \n 		dcsOther(); \n 	} \n 	else if (typeof(dcsPlugin)=="function"){ \n 		dcsPlugin(); \n 	} \n 	else if (typeof(dcsFPC)=="function"){ \n 		dcsFPC(gTimeZone); \n 	} \n } \n function dcsGetCookie(name){ \n 	var pos=document.cookie.indexOf(name+"="); \n 	if (pos!=-1){ \n 		var start=pos+name.length+1; \n 		var end=document.cookie.indexOf(";",start); \n 		if (end==-1){ \n 			end=document.cookie.length; \n 		} \n 		return unescape(document.cookie.substring(start,end)); \n 	} \n 	return null; \n } \n function dcsGetCrumb(name,crumb){ \n 	var aCookie=dcsGetCookie(name).split(":"); \n 	for (var i=0;i<aCookie.length;i++){ \n 		var aCrumb=aCookie[i].split("="); \n 		if (crumb==aCrumb[0]){ \n 			return aCrumb[1]; \n 		} \n 	} \n 	return null; \n } \n function dcsFPC(offset){ \n 	if (typeof(offset)=="undefined"){ \n 		return; \n 	} \n 	var name=gFpc; \n 	var dCur=new Date(); \n 	dCur.setTime(dCur.getTime()+(dCur.getTimezoneOffset()*60000)+(offset*3600000)); \n 	var dExp=new Date(dCur.getTime()+315360000000); \n 	var dSes=new Date(dCur.getTime()); \n 	if (document.cookie.indexOf(name+"=")!=-1){ \n 		var id=dcsGetCrumb(name,"id"); \n 		var lv=parseInt(dcsGetCrumb(name,"lv")); \n 		var ss=parseInt(dcsGetCrumb(name,"ss")); \n 		if ((id==null)||(id=="null")||isNaN(lv)||isNaN(ss)){ \n 			return; \n 		} \n 		WT.co_f=id; \n 		WT.vt_f="0"; \n 		WT.vt_f_a="0"; \n 		var dLst=new Date(lv); \n 		dSes.setTime(ss); \n 		if ((dCur.getTime()>(dLst.getTime()+1800000))||(dCur.getTime()>(dSes.getTime()+28800000))){ \n 			dSes.setTime(dCur.getTime()); \n 			WT.vt_f_s="1"; \n 		} \n 		if ((dCur.getDay()!=dLst.getDay())||(dCur.getMonth()!=dLst.getMonth())||(dCur.getYear()!=dLst.getYear())){ \n 			WT.vt_f_d="1"; \n 		} \n 	} \n 	else{ \n 		var tmpname=name+"_TMP="; \n 		document.cookie=tmpname+"1"; \n 		if (document.cookie.indexOf(tmpname)!=-1){ \n 			document.cookie=tmpname+"; expires=Thu, 01-Jan-1970 00:00:01 GMT"; \n 			if ((typeof(gWtId)!="undefined")&&(gWtId!="")){ \n 				WT.co_f=gWtId; \n 				WT.vt_f="0"; \n 			} \n 			else if ((typeof(gTempWtId)!="undefined")&&(gTempWtId!="")){ \n 				WT.co_f=gTempWtId; \n 				WT.vt_f="1"; \n 			} \n 			else{ \n 				WT.co_f="2"; \n 				var cur=dCur.getTime().toString(); \n 				for (var i=2;i<=(32-cur.length);i++){ \n 					WT.co_f+=Math.floor(Math.random()*16.0).toString(16); \n 				} \n 				WT.co_f+=cur; \n 				WT.vt_f="1"; \n 			} \n 			WT.vt_f_a=(typeof(gWtAccountRollup)!="undefined")?"0":"1"; \n 			WT.vt_f_s="1"; \n 			WT.vt_f_d="1"; \n 		} \n 		else{ \n 			WT.vt_f="2"; \n 			WT.vt_f_a="2"; \n 			return; \n 		} \n 	} \n 	WT.co_f=escape(WT.co_f); \n 	WT.vt_sid=WT.co_f+"."+dSes.getTime(); \n 	var expiry="; expires="+dExp.toGMTString(); \n 	document.cookie=name+"="+"id="+WT.co_f+":lv="+dCur.getTime().toString()+":ss="+dSes.getTime().toString()+expiry+"; path=/"+(((typeof(gFpcDom)!="undefined")&&(gFpcDom!=""))?("; domain="+gFpcDom):("")); \n } \n // Code section for Use the new first-party cookie generated with this tag. \n var gFpc="WT_FPC"; \n var gWtId=""; \n var gTempWtId=""; \n if (gService){ \n 	var gConvert=true; \n } \n function dcsMultiTrack(){ \n 	for (var i=0;i<arguments.length;i++){ \n 		if (arguments[i].indexOf(\'WT.\')==0){ \n 				WT[arguments[i].substring(3)]=arguments[i+1]; \n 				i++; \n 		} \n 		if (arguments[i].indexOf(\'DCS.\')==0){ \n 				DCS[arguments[i].substring(4)]=arguments[i+1]; \n 				i++; \n 		} \n 		if (arguments[i].indexOf(\'DCSext.\')==0){ \n 				DCSext[arguments[i].substring(7)]=arguments[i+1]; \n 				i++; \n 		} \n 	} \n 	var dCurrent=new Date(); \n 	DCS.dcsdat=dCurrent.getTime(); \n 	dcsTag(); \n } \n function dcsAdv(){ \n 	dcsFunc("dcsCookie"); \n } \n //--> \n </SCRIPT> \n <!-- END OF SDC Advanced Tracking Code --> \n <!-- START OF SmartSource Data Collector TAG --> \n <SCRIPT LANGUAGE="JavaScript"><!-- \n var gImages=new Array; \n var gIndex=0; \n var DCS=new Object(); \n var WT=new Object(); \n var DCSext=new Object(); \n var gQP=new Array(); \n var gDomain="sdc.jrj.com.cn"; \n var gDcsId="dcs0kbnws6cwv3t3c80mwlr23_8j4c"; \n // Add customizations here \n if ((typeof(gConvert)!="undefined")&&gConvert&&(document.cookie.indexOf(gFpc+"=")==-1)){ \n 	//document.write("<SCR"+"IPT Language=\'JavaScript\' SRC=\'"+"http"+(window.location.protocol.indexOf(\'https:\')==0?\'s\':\'\')+"://"+gDomain+"/"+gDcsId+"/wtid.js"+"\'></SCR"+"IPT>"); \n } \n //--> \n </SCRIPT> \n <SCRIPT LANGUAGE="Javascript"><!-- \n function dcsVar(){ \n 	var dCurrent=new Date(); \n 	WT.tz=dCurrent.getTimezoneOffset()/60*-1; \n 	if (WT.tz==0){ \n 		WT.tz="0"; \n 	} \n 	WT.bh=dCurrent.getHours(); \n 	WT.ul=navigator.appName=="Netscape"?navigator.language:navigator.userLanguage; \n 	if (typeof(screen)=="object"){ \n 		WT.cd=navigator.appName=="Netscape"?screen.pixelDepth:screen.colorDepth; \n 		WT.sr=screen.width+"x"+screen.height; \n 	} \n 	if (typeof(navigator.javaEnabled())=="boolean"){ \n 		WT.jo=navigator.javaEnabled()?"Yes":"No"; \n 	} \n 	if (document.title){ \n 		WT.ti=document.title; \n 	} \n 	WT.fi="No"; \n 	if (navigator.plugins && navigator.plugins.length) {\n 		for (var ii=0;ii<navigator.plugins.length;ii++) {\n 		if (navigator.plugins[ii].name.indexOf(\'Shockwave Flash\')!=-1) {\n 			WT.fv=navigator.plugins[ii].description.split(\'Shockwave Flash \')[1];\n 			WT.fi="Yes"; \n 			break;\n 		}\n 	}\n 	} else if (window.ActiveXObject) {\n 	var swf = new ActiveXObject(\'ShockwaveFlash.ShockwaveFlash\');\n 	 	if(swf) {\n 	 	 	try{WT.fv=swf.GetVariable(\'$version\').split(\' \')[1].replace(/,/ig,\'.\');WT.fi=\'Yes\';}catch(e){}\n 	 	}\n 	}\n 	if(WT.fi==\'Yes\'){\n 	    WT.fv=WT.fv.substring(0,WT.fv.indexOf(\'.\')+2); \n 	 }\n 	DCS.dcsdat=dCurrent.getTime(); \n 	DCS.dcssip=window.location.hostname; \n 	DCS.dcsuri=window.location.pathname; \n 	if (window.location.search){ \n 		DCS.dcsqry=window.location.search; \n 		if (gQP.length>0){ \n 			for (var i=0;i<gQP.length;i++){ \n 				var pos=DCS.dcsqry.indexOf(gQP[i]); \n 				if (pos!=-1){ \n 					var front=DCS.dcsqry.substring(0,pos); \n 					var end=DCS.dcsqry.substring(pos+gQP[i].length,DCS.dcsqry.length); \n 					DCS.dcsqry=front+end; \n 				} \n 			} \n 		} \n 	} \n 	if ((window.document.referrer!="")&&(window.document.referrer!="-")){ \n 		if (!(navigator.appName=="Microsoft Internet Explorer"&&parseInt(navigator.appVersion)<4)){ \n 			DCS.dcsref=window.document.referrer; \n 		} \n 	} \n } \n function A(N,V){ \n 	return "&"+N+"="+dcsEscape(V); \n } \n function dcsEscape(S){ \n 	if (typeof(RE)!="undefined"){ \n 		var retStr = new String(S); \n 		for (R in RE){ \n 			retStr = retStr.replace(RE[R],R); \n 		} \n 		return retStr; \n 	} \n 	else{ \n 		return escape(S); \n 	} \n } \n function dcsLoadHref(evt){ \n 	if ((typeof(gHref)!="undefined")&&(gHref.length>0)){ \n 		window.location=gHref; \n 		gHref=""; \n 	} \n } \n function dcsCreateImage(dcsSrc){ \n 	if (document.images){ \n 		gImages[gIndex]=new Image; \n 		if ((typeof(gHref)!="undefined")&&(gHref.length>0)){ \n 			gImages[gIndex].onload=gImages[gIndex].onerror=dcsLoadHref; \n 		} \n 		gImages[gIndex].src=dcsSrc; \n 		gIndex++; \n 	} \n 	else{ \n 		document.write(\'<IMG BORDER="0" NAME="DCSIMG" WIDTH="1" HEIGHT="1" SRC="\'+dcsSrc+\'">\'); \n 	} \n } \n function dcsMeta(){ \n 	var elems; \n 	if (document.all){ \n 		elems=document.all.tags("meta"); \n 	} \n 	else if (document.documentElement){ \n 		elems=document.getElementsByTagName("meta"); \n 	} \n 	if (typeof(elems)!="undefined"){ \n 		for (var i=1;i<=elems.length;i++){ \n 			var meta=elems.item(i-1); \n 			if (meta.name){ \n 				if (meta.name.indexOf(\'WT.\')==0){ \n 					WT[meta.name.substring(3)]=meta.content; \n 				} \n 				else if (meta.name.indexOf(\'DCSext.\')==0){ \n 					DCSext[meta.name.substring(7)]=meta.content; \n 				} \n 				else if (meta.name.indexOf(\'DCS.\')==0){ \n 					DCS[meta.name.substring(4)]=meta.content; \n 				} \n 			} \n 		} \n 	} \n } \n function dcsTag(){ \n 	var P="http"+(window.location.protocol.indexOf(\'https:\')==0?\'s\':\'\')+"://"+gDomain+(gDcsId==""?\'\':\'/\'+gDcsId)+"/dcs.gif?"; \n 	for (N in DCS){ \n 		if (DCS[N]) { \n 			P+=A(N,DCS[N]); \n 		} \n 	} \n 	for (N in WT){ \n 		if (WT[N]) { \n 			P+=A("WT."+N,WT[N]); \n 		} \n 	} \n 	for (N in DCSext){ \n 		if (DCSext[N]) { \n 			P+=A(N,DCSext[N]); \n 		} \n 	} \n 	if (P.length>2048&&navigator.userAgent.indexOf(\'MSIE\')>=0){ \n 		P=P.substring(0,2040)+"&WT.tu=1"; \n 	} \n 	dcsCreateImage(P); \n } \n function dcsFunc(func){ \n 	if (typeof(window[func])=="function"){ \n 		window[func](); \n 	} \n } \n dcsVar(); \n //dcsMeta(); \n dcsFunc("dcsAdv"); \n dcsTag(); \n //--> \n </SCRIPT> ';document.write(jrj_SDC_code);var dcsTagUtils={getCookie:function(b){var a=document.cookie.match("(?:^|;)\\s*"+b+"=([^;]*)");return a?unescape(a[1]):""},setCookie:function(b,d,a,f,c,e){document.cookie=b+"="+escape(d)+((a)?"; expires="+a.toGMTString():"")+((f)?"; path="+f:"")+((c)?"; domain="+c:"")+((e)?"; secure":"")}};function getQueryString(a) {var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");var lcurl = window.location+'';if(lcurl.indexOf('#') != -1){var seosbhh = window.location.hash.substr(1).match(b);if (seosbhh != null) return unescape(seosbhh[2]); return null;}else if(lcurl.indexOf('?') != -1){var r = window.location.search.substr(1).match(b);if (r != null) return unescape(r[2]); return null;}}var cookieTgqdcodeName=getQueryString("tgqdcode");var cookieylbcodeName=getQueryString("ylbcode");var locat=window.location.href;var itft=locat.indexOf("itougu.jrj.com.cn");var tft=locat.indexOf("t.jrj.com.cn");var ft8=locat.indexOf("8.jrj.com.cn");var url_bbs=locat.indexOf("bbs.jrj.com.cn");var url_blog=locat.indexOf("blog.jrj.com.cn");var url_win=locat.indexOf("win.jrj.com.cn");var url_zhibo=locat.indexOf("zhibo.jrj.com.cn");if(itft==-1&&tft==-1&&ft8==-1){if(!!cookieTgqdcodeName){var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode",cookieTgqdcodeName,cookieTgqdcodeExpires,"/","jrj.com.cn");var cookieylbcodeExpires=new Date();cookieylbcodeExpires.setTime(cookieylbcodeExpires.getTime()+24*60*60*1000);dcsTagUtils.setCookie("ylbcode",cookieylbcodeName,cookieylbcodeExpires,"/","jrj.com.cn")}else{if(url_bbs!==-1){var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode","227396R2",cookieTgqdcodeExpires,"/","jrj.com.cn")}else{if(url_blog!==-1){var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode","8Z5MQRNR",cookieTgqdcodeExpires,"/","jrj.com.cn")}else{if(url_win!==-1){var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode","TCTPC53B",cookieTgqdcodeExpires,"/","jrj.com.cn")}else{if(url_zhibo!==-1){var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode","34Q364MS",cookieTgqdcodeExpires,"/","jrj.com.cn")}else{var cookieTgqdcodeExpires=new Date();cookieTgqdcodeExpires.setTime(cookieTgqdcodeExpires.getTime()+72*60*60*1000);dcsTagUtils.setCookie("channelCode","3763BEXX",cookieTgqdcodeExpires,"/","jrj.com.cn");var cookieylbcodeExpires=new Date();cookieylbcodeExpires.setTime(cookieylbcodeExpires.getTime()+24*60*60*1000);dcsTagUtils.setCookie("ylbcode","24S2AZ96",cookieylbcodeExpires,"/","jrj.com.cn")}}}}}}if(window.location.host!="8.jrj.com.cn"){var _urlcode=cookieylbcodeName;if(_urlcode!=null){if(dcsTagUtils.getCookie("ylbcode")==""){var exp=new Date();exp.setTime(exp.getTime()+24*60*60*1000);dcsTagUtils.setCookie("ylbcode",_urlcode,exp)}}}document.writeln('<script type="text/javascript" src="http://c.wrating.com/a1.js"><\/script>');(function(){function a(){if(typeof vjEventTrack=="function"){vjAcc="860010-2948010100";wrUrl="http://c.wrating.com/";vjEventTrack("")}else{setTimeout(a,100)}}a()}());document.writeln('<noscript><img src="http://c.wrating.com/a.gif?a=&c=860010-2948010100" width="1" height="1"/></noscript>');(function(){var b=document.createElement("script");b.src="//push.zhanzhang.baidu.com/push.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();
+
+//2017.03.01 冯春健:经巫总确认，为促进SEO工作，可在全站部署百度统计代码。
+
+/*var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0359dbaa540096117a1ec782fff9c43f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+*/
+//2017.03.01 冯春健:经巫总确认，为促进SEO工作，可在全站部署百度统计代码。
+
+//2017.03.02 冯春健：为促进金融界页面在360搜索引擎的快速收录，请帮忙添加360自动收录代码。谢谢！
+var src = (document.location.protocol == "http:")?"http://js.passport.qihucdn.com/11.0.1.js?05022d9afecc9e9b3a5372d5305b59f3":"https://jspassport.ssl.qhimg.com/11.0.1.js?05022d9afecc9e9b3a5372d5305b59f3";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+//2017.03.02 冯春健：为促进金融界页面在360搜索引擎的快速收录，请帮忙添加360自动收录代码。谢谢！
+
+
+//2017.03.06冯春健:有关全站添加百度统计代码seo再次进行修改
+
+var locat = window.location.href;
+var news_mjrj = locat.indexOf("m.jrj.com.cn");
+var mjrj = locat.indexOf("m.jrj.com.cn");
+var news_ylb = locat.indexOf("8.jrj.com.cn");
+var news_atg = locat.indexOf("itougu.jrj.com.cn"); 
+var news_bbs = locat.indexOf("bbs.jrj.com.cn"); 
+var news_blog = locat.indexOf("blog.jrj.com.cn"); 
+var news_istock = locat.indexOf("istock.jrj.com.cn"); 
+var news_forex = locat.indexOf("forex.jrj.com.cn");
+var news_futures = locat.indexOf("futures.jrj.com.cn"); 
+var news_money = locat.indexOf("money.jrj.com.cn");
+var news_bank = locat.indexOf("bank.jrj.com.cn");
+var news_insurance = locat.indexOf("insurance.jrj.com.cn");
+var news_fund = locat.indexOf("fund.jrj.com.cn");
+var news_summary = locat.indexOf("summary.jrj.com.cn");
+var news_qs = locat.indexOf("qs.jrj.com.cn");
+var news_usstock = locat.indexOf("usstock.jrj.com.cn");
+var news_hk = locat.indexOf("hk.jrj.com.cn");
+var news_stock = locat.indexOf("stock.jrj.com.cn");
+var news_v = locat.indexOf("v.jrj.com.cn");
+var news_opinion = locat.indexOf("opinion.jrj.com.cn");
+var news_finance = locat.indexOf("finance.jrj.com.cn");
+
+if(news_mjrj !== -1){
+	//手机jrj
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?8e6b22533be2449b420f6a8f7abab6e4";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}else if(news_finance !== -1){
+	//财经频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?ccc9b99f55fb5d7a96ba509333849ac4";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_opinion !== -1){
+	//观点频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?98bc01310c1b1110a0285ca2fbf11237";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_v !== -1){
+	//视频频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?5b743e2395d1a9bdb86b1bafe0e6e531";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_hk !== -1){
+	//港股频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?3ce6851617140c1be6f195264a44baa9";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_usstock !== -1){
+	//美股频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?c91e6771d60251114c6f8c40bdf1cc15";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_qs !== -1){
+	//券商频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?4ce2e2c75742a77aec57d46a467b88a8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_summary !== -1){
+	//行情中心
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?ba23d75f14b309beb99027b53e496e2c";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_fund !== -1){
+	//基金频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?a07bde197b7bf109a325eebaee445939";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_insurance !== -1){
+	//保险频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?1b397962e04208abb755c6ac7def39db";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}else if(news_bank !== -1){
+	//银行频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?def893ca769259f8e29990de1619c864";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}else if(news_money !== -1){
+	//理财频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e453aed8c17ef09c2c911f7ff7528735";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}else if(news_futures !== -1){
+	//期货频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?b1f1c722f96573a43f6b91b62552f73f";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}else if(news_forex !== -1){
+	//外汇频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?f3118042b01294743706d8e041cfe4b1";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();		
+}else if(news_istock !== -1){
+	//爱股频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?06a2839e8a676be9c36a21c906e9a157";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_stock !== -1){
+	//股票频道
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d654909655f2581e69361531a7850450";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_blog !== -1){
+	//博客
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?759d566ff5a72c2815f63ad66236ace1";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_bbs !== -1){
+	//论坛
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?c77760c990c37624bb0be128c3735c2c";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_atg !== -1){
+	//爱投顾
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?dc9a0fda26a6b170d190c1fcebdb238c";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else if(news_ylb !== -1){
+	//盈利宝
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?551330f0a3a2701167822c8264d4bbd6";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+}else{
+	//其他
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?0359dbaa540096117a1ec782fff9c43f";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+}
+//2017.03.06冯春健:有关全站添加百度统计代码seo再次进行修改

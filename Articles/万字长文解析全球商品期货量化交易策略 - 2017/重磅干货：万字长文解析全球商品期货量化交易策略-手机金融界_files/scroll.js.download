@@ -1,0 +1,25 @@
+/**
+ * 
+ * 滚动条
+ * 
+ */
+var jrj_scroll={
+		
+		/*	
+		 *  滚动条到底端事件
+		 * 	callback:	业务方法
+		 * 	
+		 * */
+		onBottom:function(callback){
+			$(window).scroll(function(){
+				var scrollTop = $(this).scrollTop();
+				var scrollHeight = $(document).height();
+				var windowHeight = $(this).height();
+				if(scrollTop + windowHeight == scrollHeight){
+					callback();
+				}
+			});
+		}
+
+
+}

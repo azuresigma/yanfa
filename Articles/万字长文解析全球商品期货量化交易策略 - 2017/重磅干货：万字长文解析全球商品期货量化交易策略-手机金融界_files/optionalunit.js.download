@@ -1,0 +1,130 @@
+﻿$(document).ready(function(){
+		if(typeof(code)!="undefined"&&code.length>0){
+			OptionalUnit();
+			zixuan();
+	}
+})
+//自选股
+function OptionalUnit(){
+	var list="";
+	for(var i=0;i<code.length-1;i++){
+		list+=code[i]+","
+	}
+	list+=code[code.length-1];
+		$.ajax({
+			type:"get",
+			dataType:"script",
+			url:"http://q.jrjimg.cn/?q=cn|s&c=code,name,np,pl&i="+list,
+			success:onload,
+			scriptCharset:"UTF-8"
+		});
+}
+//js动态生成自选股信息
+function onload(){
+	$("#mydiv").append('<div id ="tishi" class="tishi"><div id="ovjs" class="ovjs"><table></table></div></div>');
+	$("#ovjs").before("<h2>爱投顾提醒您，本文涉及以下个股:</h2>");
+	for(var i=0;i<obj0.HqData.length;i++){
+					var n=[];
+					n.push('<tr> <td class="hqclick">'+obj0.HqData[i][obj0.Column.name]+'<span>('+obj0.HqData[i][obj0.Column.code]+')</span></td>'+
+					'<td class="red">'+obj0.HqData[i][obj0.Column.np].toFixed(2)+'</td><td class="red">'+obj0.HqData[i][obj0.Column.pl].toFixed(2)+'%</td><td class="fr">'+
+					'<a href="javascript:void(0);"title="" class="madd cqhk" attr="'+i+'" id="'+obj0.HqData[i][obj0.Column.code]+'">+加入自选</a></td> </tr>');
+					$("#ovjs table").append(n.join(""));
+			}
+	if(obj0.HqData.length>3){
+		$("#tishi").append('<p class="more"><b class="moreBtn_stock"><i>更多</i>&gt;</b></p>');
+	}
+	for(var i=0;i<obj0.HqData.length;i++){
+		if(obj0.HqData[i][obj0.Column.pl].toFixed(2)<0){
+			$(".tishi table").find("tr").eq(i).children("td").eq("1").addClass('gre').removeClass('red');
+			$(".tishi table").find("tr").eq(i).children("td").eq("2").addClass('gre').removeClass('red');
+		}else if(obj0.HqData[i][obj0.Column.pl].toFixed(2)==0){
+			$(".tishi table").find("tr").eq(i).children("td").eq("1").removeClass('red');
+			$(".tishi table").find("tr").eq(i).children("td").eq("2").removeClass('red');
+		}else{
+			$(".tishi table").find("tr").eq(i).children("td").eq("2").text("+"+obj0.HqData[i][obj0.Column.pl].toFixed(2)+"%");
+		}
+	}
+}
+var zxg=[];
+//解析返回的数据
+JrjHome.Zxg.load = function(){
+	if(typeof(JrjHome_Zxg_list) != "undefined" && JrjHome_Zxg_list != ""){
+		console.log("11111111111111111------"+JrjHome_Zxg_list);
+		zxg=JrjHome_Zxg_list.split(",");
+		for(var i=0;i<zxg.length;i++){
+			$("#"+zxg[i]).addClass('yadd').removeClass('madd').text('+已添加');
+		}
+	}
+};
+//为用户未登录时，添加的自选股方法
+function zixuan(){
+var pUtil = {
+		href : window.location.href,
+		getValue : function(key){
+			var ret = null;
+			var kv = pUtil.href.substr(pUtil.href.indexOf("?") + 1);
+			if(kv.length > 0){
+				var pr = kv.split("&");
+				for(var i=0;i<pr.length;i++){
+					var tk = pr[i].split("=");
+					if(tk[0] == key){
+						ret = tk[1];
+					}
+				}
+			}
+			return ret;
+		}
+}
+var asc = null;
+var row=0;
+	if(pUtil.getValue("f") == "sd" && (asc = pUtil.getValue("ac")) != null){
+		row=pUtil.getValue("row");
+		$.ajax({
+			type:"GET",
+			dataType:"script",
+			url : "http://i.jrj.com.cn/app/stock/json/add.jspa?vname=stock_add&code=" + asc,
+			success : function(){
+				if(typeof(stock_add) != "undefined"){
+					if(stock_add == "ok" || stock_add == "have"){
+						$(".tishi table").find("tr td").eq(row).parent().find("a").addClass('yadd').removeClass('madd').text('+已添加');
+					}
+				}
+			},
+			error : function(){
+				alert("添加失败，请稍后重试！");
+			}
+		});
+	}
+}
+//为自选股添加事件
+$(document).on('touchend','.cqhk',function(){
+		   var co=$(this).parent().parent().children(":first-child").children().html().replace(/[^0-9]/ig,"");
+		   var msnode=$(this);
+		   var row=parseInt(msnode.attr("attr"));
+		   		   if(!JrjHome.Sso.isLogin()){
+				window.location.href = "http://m.jrj.com.cn/sso/mobileToLogin?ReturnUrl=" + encodeURIComponent(window.location.href + "?f=sd&ac=" + co+"&row="+row);
+		   }else{
+				$.ajax({
+					type:"GET",
+					dataType: 'script',
+					url : "http://i.jrj.com.cn/app/stock/json/add.jspa?vname=stock_add&code=" + co,
+					success : function(){
+						if(typeof(stock_add) != "undefined"){
+							if(stock_add == "ok" || stock_add == "have"){
+								msnode.addClass('yadd').removeClass('madd').text('+已添加');
+							}
+						}
+					},
+					error : function(){
+						alert("添加失败，请稍后重试！");
+					}
+				});
+		   }
+
+		});
+/**
+*为自选股添加行情链接
+*/
+$(document).on('touchend','.hqclick',function(){
+	window.location.href="http://m.jrj.com.cn/v2/share,"+$(this).html().replace(/[^0-9]/ig,"")+".jspa";
+});
